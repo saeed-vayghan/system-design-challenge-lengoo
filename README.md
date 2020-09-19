@@ -5,9 +5,8 @@
   * [x] GIT
   * [x] Syestem Design Sketch
   * [x] Dockerize (Node, MongoDB, Redis, ELK, RabbitMQ)
-
-  * [ ] PM2
-  * [ ] Eslint
+  * [x] PM2
+  * [x] Eslint
   * [ ] package.json
   * [ ] npm-shrinkwrap.json
   * [ ] Env Variables
