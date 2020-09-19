@@ -1,0 +1,35 @@
+{
+  "apps" : [
+    {
+      "name": "API-Server",
+      "script": "api-server.js",
+      "args": [],
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "watch": true,
+      "merge_logs": false,
+      "node_args": "",
+      "cwd": "./",
+      "exec_mode": "cluster",
+      "instances": "1",
+      "env": {
+        "NODE_CUSTOM_ENV": "NODE_CUSTOM_ENV"
+      }
+    },
+
+    {
+      "name": "Feed-Server",
+      "script": "feed-server.js",
+      "args": [],
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "watch": true,
+      "merge_logs": false,
+      "node_args": "",
+      "cwd": "./",
+      "exec_mode": "cluster",
+      "instances": "1",
+      "env": {
+        "NODE_CUSTOM_ENV": "NODE_CUSTOM_ENV"
+      }
+    }
+  ]
+}
