@@ -1,5 +1,8 @@
 # system-design-challenge-lengoo
 
+**System Design**
+  A simple sketch on system architecture ([system-design.jpg](resource/system-design.jpg))
+
 
 **Project Structure**
   * [x] GIT
