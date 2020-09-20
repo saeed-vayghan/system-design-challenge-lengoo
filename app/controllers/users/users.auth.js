@@ -81,7 +81,7 @@ const createTokens = async (user, client) => {
  *     HTTP/1.1 400 db related error
  *     {
  *       "status": "failed",
- *       "message": "this-will-be-constious-kind-of-err-msg"
+ *       "message": "error-message"
  *     }
  */
 exports.userLogIn = async function (req, res, next) {

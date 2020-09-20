@@ -13,7 +13,7 @@ const validateEmail = require('../../plugins/utils/validateEmail')
  * @apiVersion 1.0.0
  * @apiName registerUser
  * @apiGroup User-Auth
- * @apiPermission Admin
+ * @apiPermission User
  *
  * @apiUse BaseHeader
  *
@@ -44,7 +44,7 @@ const validateEmail = require('../../plugins/utils/validateEmail')
  *     HTTP/1.1 400 db related error
  *     {
  *       "status": "failed",
- *       "message": "this-will-be-constious-kind-of-err-msg"
+ *       "message": "error-message"
  *     }
  */
 const registerUser = async (req, res, next) => {
