@@ -3,35 +3,42 @@
 **System Design**
   A simple sketch on system architecture ([system-design.jpg](resource/system-design.jpg))
 
+**Best practices**
+  * [x] Project Structure, Grouping files by technical role (Configs, Routers, Models, Controllers)
+  * [ ] Develop your own common utilities as a NPM package (to-do)
+  * [x] Separate Express App and Server
+  * [x] Secure Environment Variables and Hierarchical Config
+  * [x] Well defined Error Handling
+  * [x] Eslint
+  * [x] Naming-Tagging (Asset-Inventory)
+  * [ ] Lock Dependencies (npm-shrinkwrap.json)
+  * [ ] Using Snyk.io
+  * [ ] Exit the process Gracefully
+  * [ ] CORS
+  * [ ] Logging (APM, ELK, ...)
+  * [ ] Monitoring
+  * [ ] Caching
+  * [ ] CI-CD
+  * [ ] Documentaion (includes API-DOC)
+  * [ ] Automations Test and Code Coverage
+  * [ ] Filter Input, Escape Output
+  * [ ] Authentication Layer (OAuth, JWT)
 
 **Project Structure**
   * [x] GIT
   * [x] Syestem Design Sketch
   * [x] Dockerize (Node, MongoDB, Redis, ELK, RabbitMQ)
   * [x] PM2
-  * [x] Eslint
-  * [x] Models, Plugins, Routes, Controllers
-  * [x] Query sanitizer
   * [x] Env Variables
   * [x] package.json
-  * [x] Naming-Tagging (Asset-Inventory)
   * [x] Levenshtein Distance Algorithm
-  * [x] Unit-Test
-  * [ ] Functional-Test
-  * [ ] Code Coverage
-  * [ ] API-DOC
-  * [ ] Security check through snyk.io
-  * [ ] npm-shrinkwrap.json
-  * [ ] Handle CORS
-  * [ ] Logging
-  * [ ] Monitoring
-  * [ ] Caching
-  * [ ] CI-CD
-  * [ ] Documentaion
+  * [x] Query sanitizer
+  * [x] Unit Test
+  * [ ] Functional Test
 <hr>
 
-**Third Party**
-  * [ ] MongoDB
+**Setup Third Party Services**
+  * [x] MongoDB
   * [ ] ELK
   * [ ] Redis
   * [ ] RabbitMQ
@@ -45,15 +52,13 @@
 * Logging (failed logins, DB interactions, ...)
 * Rotate keys (use services like AWS Secrets-Manager)
 * Separate development and production environments (dockerize your development dependencies)
-* Escape Input / Filter Output
 
 **Resource Management**
 * Protect yourself from DoS Attacks (Rate-limiters, Debouncers, and Throttlers)
-<hr>
-
-**Optimization - To Scale Up**
 * Tweaking computing resources based on some custom benchmarks
 * Make balance between CPU cores and allocated Memory
+* Scalability
+<hr>
 <hr><br><br>
 
 
