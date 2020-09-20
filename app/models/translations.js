@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
+const hash     = require('../plugins/utils/hash')
 
 /**
  * Translations Schema
@@ -84,8 +85,8 @@ translationschema.plugin(lastMod);
 // OR db.translations.createIndex({ key: 1 }, { background: true, unique: true })
 
 translationschema.pre('save', function(next) {
-  // this.sourceLanguageHash = hash(this.sourceLanguage)
-  // this.targetLanguageHash = hash(this.targetLanguage)
+  this.sourceLanguageHash = hash(this.sourceLanguage);
+  this.targetLanguageHash = hash(this.targetLanguage);
 
   next();
 });
