@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-require('../../config')
+require('../../config');
 
 // connect to db
 require('../../config/dbconfigs')();
