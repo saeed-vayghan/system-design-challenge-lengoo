@@ -12,8 +12,7 @@ const { tokenGen } = require('../../plugins/utils/randomString')
 
 
 const createTokens = async (user, client) => {
-  const TS = new Date();
-  const currentUnixTS = TS.getTime();
+  const currentUnixTS = new Date().getTime();
 
   /** @type {IAccessToken>} */
   const aToken = new AccessToken();
@@ -121,12 +120,10 @@ exports.userLogIn = async function (req, res, next) {
   const oldAccessToken  = await AccessToken.findOne({ _user: user._id, client: client })
   
   if (oldAccessToken) {
-    // tokensClient.del('accessTokens.' + oldAccessToken.token);
     await oldAccessToken.remove();
   }
 
   if (oldRefreshToken) {
-    // tokensClient.del('refreshTokens.' + oldRefreshToken.token);
     await oldRefreshToken.remove();
   }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const sanitize = require('../utils/sanitizer');
+const sanitize = require('../../utils/sanitizer');
 const mongoose = require('mongoose');
 
 const Model = mongoose.model('Translations');
