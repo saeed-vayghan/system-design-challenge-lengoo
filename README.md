@@ -14,13 +14,14 @@
   * [x] Query sanitizer
   * [x] Env Variables
   * [x] package.json
-  * [ ] npm-shrinkwrap.json
-  * [ ] Naming-Tagging (Asset-Inventory)
-  * [ ] Unit-Test
+  * [x] Naming-Tagging (Asset-Inventory)
+  * [x] Levenshtein Distance Algorithm
+  * [x] Unit-Test
   * [ ] Functional-Test
   * [ ] Code Coverage
   * [ ] API-DOC
   * [ ] Security check through snyk.io
+  * [ ] npm-shrinkwrap.json
   * [ ] Handle CORS
   * [ ] Logging
   * [ ] Monitoring
@@ -72,6 +73,9 @@ docker-compose up --build
 **Run application in local environment**
 
 **Run unit tests**
+```bash
+mocha test/unit/index.js --exit
+```
 
 **Run functional tests**
 
