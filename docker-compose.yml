@@ -10,17 +10,17 @@ services:
     links:
       - "mongo"
       - "mongo-express"
-      - "elk"
-      - "redis"
-      - "rabbitmq"
+      # - "elk"
+      # - "redis"
+      # - "rabbitmq"
     volumes:
       - .:/usr/src/app
     depends_on:
       - "mongo"
       - "mongo-express"
-      - "elk"
-      - "redis"
-      - "rabbitmq"
+      # - "elk"
+      # - "redis"
+      # - "rabbitmq"
 
 
   mongo:
@@ -49,30 +49,30 @@ services:
     depends_on:
       - mongo
 
-  elk:
-    image: sebp/elk
-    container_name: 'elk-lengoo'
-    ports:
-      - "5601:5601"
-      - "9200:9200"
-      - "5044:5044"
+  # elk:
+  #   image: sebp/elk
+  #   container_name: 'elk-lengoo'
+  #   ports:
+  #     - "5601:5601"
+  #     - "9200:9200"
+  #     - "5044:5044"
 
-  redis:
-    container_name: 'redis-lengoo'
-    image: 'redis'
-    ports:
-      - '6379:6379'
+  # redis:
+  #   container_name: 'redis-lengoo'
+  #   image: 'redis'
+  #   ports:
+  #     - '6379:6379'
 
-  rabbitmq:
-    container_name: 'rabbitmq-lengoo'
-    image: 'rabbitmq:3-management'
-    environment:
-      RABBITMQ_DEFAULT_USER: 'guest'
-      RABBITMQ_DEFAULT_PASS: 'guest'
-      RABBITMQ_DEFAULT_VHOST: '/'
-    ports:
-      - '15672:15672'
-      - '5672:5672'
+  # rabbitmq:
+  #   container_name: 'rabbitmq-lengoo'
+  #   image: 'rabbitmq:3-management'
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: 'guest'
+  #     RABBITMQ_DEFAULT_PASS: 'guest'
+  #     RABBITMQ_DEFAULT_VHOST: '/'
+  #   ports:
+  #     - '15672:15672'
+  #     - '5672:5672'
 
 
 
