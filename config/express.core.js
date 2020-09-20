@@ -19,7 +19,7 @@ app.set('showStackError', true);
 require('./dbconfigs')();
 
 // inject models
-// require('../app/models/record');
+require('../app/models/translations');
 
 // inject routes
 // require('../app/routes/core')(app);
