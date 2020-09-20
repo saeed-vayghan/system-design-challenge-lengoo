@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const hash     = require('../plugins/utils/hash')
+const lastMod  = require('../plugins/models/lastMod');
 
 
 /**
@@ -68,19 +69,6 @@ const translationSchema = new Schema(
   }
 );
 
-const lastMod = function (schema) {
-  const self = this
-
-  schema.pre('save', function (next) {
-    if (self.isNew) {
-      self.created = new Date();
-    }
-
-    self.updated = new Date();
-
-    next();
-  });
-};
 
 translationSchema.plugin(lastMod);
 
@@ -93,10 +81,5 @@ translationSchema.pre('save', function(next) {
   next();
 });
 
-// translationSchema.post('save', function(doc) {
-// });
-
-// translationSchema.post('remove', function(doc) {
-// });
 
 module.exports = mongoose.model('Translations', translationSchema);
