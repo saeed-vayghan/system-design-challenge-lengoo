@@ -1,6 +1,6 @@
 'use strict';
 
-const recordPlugin = require('../plugins/models/record')
+const recordPlugin = require('../plugins/models/translations')
 
 
 const find = async function (req, res, next) {

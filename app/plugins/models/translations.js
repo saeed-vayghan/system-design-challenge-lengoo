@@ -11,6 +11,15 @@ const create = async function (data) {
   let error   = null;
   let created = null;
 
+
+  /** @type {IRecord} */
+  const sampleData = {
+    name: 'number',
+    score: 10,
+    _id: 'id',
+    emails: ['str']
+  }
+
   try {
     created = await Model.create(sanitize(data));
   } catch (ex) {
@@ -39,7 +48,6 @@ const findOne = async function (query) {
   };
 };
 
-
 const findByQuery = async function (query) {
   let error = null;
   let Record  = null;
@@ -56,7 +64,10 @@ const findByQuery = async function (query) {
   };
 };
 
-const deleteRecord = async function (_id) {
+/**
+ * @param {ObjectId} _id
+ */
+const deleteOne = async function (_id) {
   let error = null;
 
   try {
@@ -75,5 +86,5 @@ module.exports = {
   create,
   findOne,
   findByQuery,
-  deleteRecord
+  deleteOne
 }

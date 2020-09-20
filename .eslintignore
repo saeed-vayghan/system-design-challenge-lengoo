@@ -3,3 +3,5 @@
 docs
 coverage
 node_modules
+
+**/*.ts
