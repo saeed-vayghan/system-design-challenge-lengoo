@@ -28,6 +28,9 @@ const log = async function (req, res, next) {
 
   // rabbit.publishTask(data, 'apiCall');
 
+
+  // await IfItIsCriticalThenSendMailToAdmin;
+
   next();
 };
 
