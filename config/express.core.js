@@ -22,7 +22,7 @@ require('./dbconfigs')();
 require('../app/models/translations');
 
 // inject routes
-// require('../app/routes/core')(app);
+require('../app/routes/core')(app);
 
 
 module.exports = app;
