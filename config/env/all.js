@@ -8,5 +8,13 @@ module.exports = {
     authors: 'Saeed Vayghani'
   },
 
-  hash_secret: process.env.HASH_SECRET
+  hash_secret: process.env.HASH_SECRET,
+
+  caching: {
+    models: {
+      user: {
+        ttl: 60 * 60 * 24
+      }
+    }
+  }
 }
