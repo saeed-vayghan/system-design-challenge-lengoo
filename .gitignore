@@ -1,4 +1,5 @@
 node_modules
+resource/uploaded
 
 .env
 .nyc_output
