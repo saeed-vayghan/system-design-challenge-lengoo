@@ -16,6 +16,8 @@
   "author": "",
   "license": "GNU Affero General Public License v3.0",
   "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/mocha": "^8.0.3",
     "@types/mongoose": "^5.7.36",
     "@types/node": "^14.11.1",
     "chai": "^4.2.0",

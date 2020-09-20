@@ -1,6 +1,6 @@
 'use strict';
 
-// credit: https://github.com/vkarpov15/mongo-sanitize/blob/master/LICENSE
+// credit: https://github.com/vkarpov15/mongo-sanitize
 
 function sanitize(v) {
   if (v instanceof Object) {
