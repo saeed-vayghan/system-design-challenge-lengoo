@@ -7,6 +7,9 @@ const AccessToken = mongoose.model('AccessToken');
 
 const { tokens: tokensClient } = require('../../plugins/thirdParty/redis');
 
+const { promisify } = require("util");
+const get = promisify(tokensClient.get.bind(tokensClient))
+
 
 
 const getUser = async (userId) => {
@@ -18,7 +21,7 @@ const getUser = async (userId) => {
 const getTokenObj = async (token) => {
   const redisKey = 'accessTokens.' + token;
 
-  const doc = await tokensClient.get(redisKey)
+  const doc = await get(redisKey)
 
   if (doc) {
     return JSON.parse(doc);

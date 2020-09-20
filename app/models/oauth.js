@@ -5,7 +5,10 @@ const Schema   = mongoose.Schema;
 const config   = require('../../config');
 
 const { tokens: tokensClient } = require('../plugins/thirdParty/redis');
-
+const { promisify } = require("util");
+const set    = promisify(tokensClient.set.bind(tokensClient))
+const del    = promisify(tokensClient.del.bind(tokensClient))
+const expire = promisify(tokensClient.expire.bind(tokensClient))
 
 
 /**
@@ -101,27 +104,27 @@ const RefreshTokenSchema = new Schema(
 );
 
 
-AccessTokenSchema.post('save', function(doc) {
+AccessTokenSchema.post('save', async function(doc) {
   const redisKey = 'accessTokens.' + doc.token;
-  tokensClient.set(redisKey, JSON.stringify(doc));
-  tokensClient.expire(redisKey, config.tokenLife);
+  await set(redisKey, JSON.stringify(doc));
+  await expire(redisKey, config.tokenLife);
 });
 
-AccessTokenSchema.post('remove', function(doc) {
+AccessTokenSchema.post('remove', async function(doc) {
   const accessTokenKey  = 'accessTokens.' + doc.token;
-  tokensClient.del(accessTokenKey);
+  await del(accessTokenKey);
 });
 
 
-RefreshTokenSchema.post('save', function(doc) {
+RefreshTokenSchema.post('save', async function(doc) {
   const redisKey = 'refreshTokens.' + doc.token;
-  tokensClient.set(redisKey, JSON.stringify(doc));
-  tokensClient.expire(redisKey, config.tokenLife);
+  await set(redisKey, JSON.stringify(doc));
+  await expire(redisKey, config.tokenLife);
 });
 
-RefreshTokenSchema.post('remove', function(doc) {
+RefreshTokenSchema.post('remove', async function(doc) {
   const refreshTokenKey = 'refreshTokens.' + doc.token;
-  tokensClient.del(refreshTokenKey);
+  await del(refreshTokenKey);
 });
 
 const ClientModel       = mongoose.model('Client', ClientSchema);

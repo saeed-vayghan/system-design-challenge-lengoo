@@ -15,9 +15,11 @@
     "helmet": "^4.1.1",
     "lodash": "^4.17.20",
     "md5": "^2.3.0",
+    "promisify": "0.0.3",
     "rand-token": "^1.0.1",
     "redis": "^3.0.2",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "util": "^0.12.3"
   },
   "author": "",
   "license": "GNU Affero General Public License v3.0",
