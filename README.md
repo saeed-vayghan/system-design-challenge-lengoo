@@ -10,12 +10,12 @@
   * [x] Dockerize (Node, MongoDB, Redis, ELK, RabbitMQ)
   * [x] PM2
   * [x] Eslint
-  * [ ] package.json
+  * [x] Models, Plugins, Routes, Controllers
+  * [x] Query sanitizer
+  * [x] Env Variables
+  * [x] package.json
   * [ ] npm-shrinkwrap.json
-  * [ ] Env Variables
   * [ ] Naming-Tagging (Asset-Inventory)
-  * [ ] Models, Plugins, Routes, Controllers
-  * [ ] Query sanitizer
   * [ ] Unit-Test
   * [ ] Functional-Test
   * [ ] Code Coverage
