@@ -11,7 +11,7 @@ services:
       - "mongo"
       - "mongo-express"
       # - "elk"
-      # - "redis"
+      - "redis"
       # - "rabbitmq"
     volumes:
       - .:/usr/src/app
@@ -19,7 +19,7 @@ services:
       - "mongo"
       - "mongo-express"
       # - "elk"
-      # - "redis"
+      - "redis"
       # - "rabbitmq"
 
 
@@ -57,11 +57,11 @@ services:
   #     - "9200:9200"
   #     - "5044:5044"
 
-  # redis:
-  #   container_name: 'redis-lengoo'
-  #   image: 'redis'
-  #   ports:
-  #     - '6379:6379'
+  redis:
+    container_name: 'redis-lengoo'
+    image: 'redis'
+    ports:
+      - '6379:6379'
 
   # rabbitmq:
   #   container_name: 'rabbitmq-lengoo'

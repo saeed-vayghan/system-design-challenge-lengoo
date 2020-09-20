@@ -10,9 +10,9 @@ const models     = redis.createClient({ url});
 const monitoring = redis.createClient({ url});  
 
 
-tokens.select(config.redisDBs.serverOne.tokens.db);
-models.select(config.redisDBs.serverOne.models.db);
-monitoring.select(config.redisDBs.serverOne.monitoring.db);
+tokens.select(config.redis.databases.tokens.db);
+models.select(config.redis.databases.models.db);
+monitoring.select(config.redis.databases.monitoring.db);
 
 
 tokens.on("error", function (err) {

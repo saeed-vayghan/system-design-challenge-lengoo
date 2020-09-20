@@ -13,5 +13,5 @@ module.exports = function(app) {
 
   app.all('/info', core.info);
 
-  // app.all('/api/*', authMiddleWares.checkToken);
+  app.all('/api/*', authMiddleWares.checkToken);
 };

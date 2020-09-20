@@ -3,9 +3,9 @@
 module.exports = {
   redis: {
 
-    server: 'redis://',
+    server: 'redis://redis:6379',
 
-    Databases: {
+    databases: {
 
       sessions: {
         db: 0,

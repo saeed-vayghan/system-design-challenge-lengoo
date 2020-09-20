@@ -34,7 +34,7 @@ const ClientSchema = new Schema(
 
 
 /**
- * AccessToken Schema
+ * @class AccessTokenSchema
  */
 const AccessTokenSchema = new Schema(
   {
@@ -129,5 +129,5 @@ const AccessTokenModel  = mongoose.model('AccessToken', AccessTokenSchema);
 const RefreshTokenModel = mongoose.model('RefreshToken', RefreshTokenSchema);
 
 module.exports.ClientModel       = ClientModel;
-module.exports.AccessTokenModel  = AccessTokenModel;
+module.exports.AccessTokenModel  = AccessTokenModel; 
 module.exports.RefreshTokenModel = RefreshTokenModel;
