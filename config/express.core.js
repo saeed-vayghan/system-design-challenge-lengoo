@@ -25,8 +25,7 @@ require('./dbconfigs')();
 require('../app/models');
 
 // inject routes
-require('../app/routes/core')(app);
-require('../app/routes/translations')(app);
+require('../app/routes')(app);
 
 
 module.exports = app;
