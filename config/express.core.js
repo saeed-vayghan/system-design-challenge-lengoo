@@ -4,15 +4,18 @@ const express = require('express');
 const app     = express();
 
 // Might be used later
-// const bodyParser = require('body-parser');
-// const helmet = require('helmet');
+const bodyParser  = require('body-parser');
+const compression = require('compression');
+const helmet      = require('helmet');
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(helmet());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(helmet());
 
 app.disable('x-powered-by');
 app.set('showStackError', true);
+app.use(compression())
 
 
 // connect to db
