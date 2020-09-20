@@ -22,7 +22,7 @@ app.use(fileUpload());
 require('./dbconfigs')();
 
 // inject models
-require('../app/models/translations');
+require('../app/models');
 
 // inject routes
 require('../app/routes/core')(app);

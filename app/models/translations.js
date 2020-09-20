@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const hash     = require('../plugins/utils/hash')
 
+
 /**
  * Translations Schema
  */
 const languageEnum = ['en', 'de'];
 
-const translationschema = new Schema(
+const translationSchema = new Schema(
   {
     source: {
       type: String,
@@ -39,7 +40,7 @@ const translationschema = new Schema(
     },
 
 
-    targetLanguageHash: {
+    sourceLanguageHash: {
       type: String,
       trim: true,
       required: true
@@ -68,33 +69,34 @@ const translationschema = new Schema(
 );
 
 const lastMod = function (schema) {
+  const self = this
+
   schema.pre('save', function (next) {
-    if (this.isNew) {
-      this.created = new Date();
+    if (self.isNew) {
+      self.created = new Date();
     }
 
-    this.updated = new Date();
+    self.updated = new Date();
 
     next();
   });
 };
 
-translationschema.plugin(lastMod);
+translationSchema.plugin(lastMod);
 
-// translationschema.index({ key: 1 }, { unique: true });
-// OR db.translations.createIndex({ key: 1 }, { background: true, unique: true })
+translationSchema.pre('save', function(next) {
+  const self = this
 
-translationschema.pre('save', function(next) {
-  this.sourceLanguageHash = hash(this.sourceLanguage);
-  this.targetLanguageHash = hash(this.targetLanguage);
+  self.sourceLanguageHash = hash(self.sourceLanguage);
+  self.targetLanguageHash = hash(self.targetLanguage);
 
   next();
 });
 
-// translationschema.post('save', function(doc) {
+// translationSchema.post('save', function(doc) {
 // });
 
-// translationschema.post('remove', function(doc) {
+// translationSchema.post('remove', function(doc) {
 // });
 
-module.exports = mongoose.model('Translations', translationschema);
+module.exports = mongoose.model('Translations', translationSchema);
