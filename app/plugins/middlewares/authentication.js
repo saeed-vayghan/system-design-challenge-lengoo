@@ -7,7 +7,7 @@ const AccessToken = mongoose.model('AccessToken');
 
 const { tokens: tokensClient } = require('../../plugins/thirdParty/redis');
 
-const { promisify } = require("util");
+const { promisify } = require('util');
 const get = promisify(tokensClient.get.bind(tokensClient))
 
 

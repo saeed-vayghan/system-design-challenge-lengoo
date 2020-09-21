@@ -32,8 +32,8 @@ describe('#Testing Utilities', function() {
     expect(levenshtein('fast', 'faster').distance).to.be.equal(2);
     expect(levenshtein('meilenstein', 'levenshtein').distance).to.be.equal(4);
 
-    const a = `In the modern era, software is commonly delivered as a service: called web apps, or software-as-a-service. The twelve-factor app is a methodology for building software-as-a-service apps that:`;
-    const b = `The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the Heroku platform.`;
+    const a = 'In the modern era, software is commonly delivered as a service: called web apps, or software-as-a-service. The twelve-factor app is a methodology for building software-as-a-service apps that:';
+    const b = 'The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the Heroku platform.';
     
     expect(levenshtein(a, b).distance).to.be.equal(189);
   });

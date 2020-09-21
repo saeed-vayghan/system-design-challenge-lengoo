@@ -12,13 +12,13 @@ const create = async function (data) {
   let created = null;
 
 
-  /** @type {IRecord} */
-  const sampleData = {
-    name: 'number',
-    score: 10,
-    _id: 'id',
-    emails: ['str']
-  }
+  // /** @type {IRecord} */
+  // const sampleData = {
+  //   name: 'number',
+  //   score: 10,
+  //   _id: 'id',
+  //   emails: ['str']
+  // }
 
   try {
     created = await Model.create(sanitize(data));

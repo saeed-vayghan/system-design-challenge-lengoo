@@ -5,7 +5,7 @@ const Schema   = mongoose.Schema;
 const config   = require('../../config');
 
 const { tokens: tokensClient } = require('../plugins/thirdParty/redis');
-const { promisify } = require("util");
+const { promisify } = require('util');
 const set    = promisify(tokensClient.set.bind(tokensClient))
 const del    = promisify(tokensClient.del.bind(tokensClient))
 const expire = promisify(tokensClient.expire.bind(tokensClient))

@@ -21,16 +21,16 @@ models.select(config.redis.databases.models.db);
 monitoring.select(config.redis.databases.monitoring.db);
 
 
-tokens.on("error", function (err) {
-  console.log("redis tokens client failed:", err);
+tokens.on('error', function (err) {
+  console.log('redis tokens client failed:', err);
 });
 
-models.on("error", function (err) {
-  console.log("redis models client failed:", err);
+models.on('error', function (err) {
+  console.log('redis models client failed:', err);
 });
 
-monitoring.on("error", function (err) {
-  console.log("redis monitoring client failed:", err);
+monitoring.on('error', function (err) {
+  console.log('redis monitoring client failed:', err);
 });
 
 

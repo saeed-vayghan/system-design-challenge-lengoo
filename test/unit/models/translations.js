@@ -1,9 +1,9 @@
 'use strict';
 
-const assert = require('assert');
-const Plugin = require('../../../app/plugins/models/translations')
+// const assert = require('assert');
+// const Plugin = require('../../../app/plugins/models/translations')
 
-const { data } = require('./data')
+// const { data } = require('./data')
 
 
 describe('#Testing Translations Model', function() {
