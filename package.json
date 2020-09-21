@@ -15,6 +15,7 @@
     "helmet": "^4.1.1",
     "lodash": "^4.17.20",
     "md5": "^2.3.0",
+    "method-override": "^3.0.0",
     "promisify": "0.0.3",
     "rand-token": "^1.0.1",
     "redis": "^3.0.2",

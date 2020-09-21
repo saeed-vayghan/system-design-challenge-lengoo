@@ -37,7 +37,7 @@ const ClientSchema = new Schema(
 
 
 /**
- * @class AccessTokenSchema
+ * AccessTokenSchema Schema
  */
 const AccessTokenSchema = new Schema(
   {

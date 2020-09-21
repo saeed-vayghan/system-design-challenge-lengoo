@@ -7,7 +7,8 @@ const AccessToken  = mongoose.model('AccessToken');
 const RefreshToken = mongoose.model('RefreshToken');
 
 const md5 = require('md5');
-const { tokenGen } = require('../../plugins/utils/randomString')
+const { tokenGen } = require('../../plugins/utils/randomString');
+const { APIError } = require('../../plugins/middlewares/error');
 
 
 
@@ -89,31 +90,31 @@ exports.userLogIn = async function (req, res, next) {
   const client   = req.headers['client'];
 
   if (!client) {
-    return res.status(403).json({ status: 'failed', message: 'miss-client' });
+    return next(new APIError(403, 'Missed Client!'));
   }
 
   if (!req.body.email) {
-    return res.status(403).jsonp({ status: 'failed', message: 'bad-input' });
+    return next(new APIError(403, 'Missed Email!'));
   }
 
   if (!req.body.password) {
-    return res.status(403).jsonp({ status: 'failed', message: 'bad-input' });
+    return next(new APIError(403, 'Missed Password!'));
   }
 
   const clientObj = await Client.findOne({ client: client })
 
   if (!clientObj) {
-    return res.status(404).json({ status: 'failed', message: 'bad-client' });
+    return next(new APIError(404, 'Bad Client!'));
   }
 
   const user = await User.findOne({ email: email })
 
   if (!user) {
-    return res.status(404).json({ status: 'failed', message: 'bad-credential' });
+    return next(new APIError(404, 'Credential Not Found!'));
   }
 
   if ( user.hashedPassword !== md5(user.salt+password) ) {
-    return res.status(403).json({ status: 'failed', message: 'bad-credential' });
+    return next(new APIError(404, 'Credential Is Not Valid!'));
   }
 
   const oldRefreshToken = await RefreshToken.findOne({ _user: user._id, client: client })

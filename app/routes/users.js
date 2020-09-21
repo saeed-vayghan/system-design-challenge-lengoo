@@ -6,9 +6,11 @@ module.exports = function(app) {
   const users = require('../controllers/users');
 
 
-  app.route('/users/register').post(users.registerUser);
-  // app.route('/users/verify').put(users.verifyUserEmail); // To-DO
+  app.post('/users/register', users.registerUser);
+  app.post('/users/login', users.userLogIn);
 
-  app.route('/users/login').post(users.userLogIn);
-  // app.route('/api/users/logout').post(users.userLogOut); // To-DO
+
+  // To-DO
+  // app.put('/users/verify', users.verifyUserEmail);
+  // app.post('/api/users/verify', users.userLogOut);
 };

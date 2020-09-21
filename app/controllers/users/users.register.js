@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const User     = mongoose.model('User');
 
 const md5 = require('md5');
-const { alphaGen }  = require('../../plugins/utils/randomString')
-const validateEmail = require('../../plugins/utils/validateEmail')
+const { alphaGen }  = require('../../plugins/utils/randomString');
+const validateEmail = require('../../plugins/utils/validateEmail');
+const { APIError } = require('../../plugins/middlewares/error');
 
 
 /**
@@ -51,20 +52,20 @@ const registerUser = async (req, res, next) => {
   const body = req.body;
 
   if (!body.email) {
-    return res.status(403).jsonp({ status: 'failed', message: 'bad-input' });
+    return next(new APIError(403, 'Missed Email!'));
   }
 
   if (!body.password) {
-    return res.status(403).jsonp({ status: 'failed', message: 'bad-input' });
+    return next(new APIError(403, 'Missed Password!'));
   }
 
   if (!body.displayName) {
-    return res.status(403).jsonp({ status: 'failed', message: 'bad-input' });
+    return next(new APIError(403, 'Missed Name!'));
   }
 
   if (body.email) {
     if (!validateEmail(body.email)) {
-      return res.status(403).jsonp({ status: 'failed', message: 'email-is-not-valid' });
+      return next(new APIError(403, 'Invalid Email!'));
     }
 
     body.email = body.email.toLowerCase();
@@ -80,7 +81,7 @@ const registerUser = async (req, res, next) => {
   const duplicateEmail = await User.findOne({ email: user.email });
 
   if (duplicateEmail) {
-    return res.status(400).json({ status: 'failed', message: 'duplicate-email' });
+    return next(new APIError(400, 'Duplicate Email!'));
   }
 
   await user.save()
