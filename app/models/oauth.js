@@ -42,7 +42,9 @@ const ClientSchema = new Schema(
 const AccessTokenSchema = new Schema(
   {
     _user: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      unique: true,
+      ref: 'User',
       required: true
     },
 
@@ -76,7 +78,9 @@ const AccessTokenSchema = new Schema(
 const RefreshTokenSchema = new Schema(
   {
     _user: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      unique: true,
+      ref: 'User',
       required: true
     },
 

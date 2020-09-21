@@ -35,6 +35,7 @@
   * [x] Query sanitizer
   * [x] Unit Test
   * [ ] Functional Test
+  * [ ] File Manager (Local Disk, S3, ...)
 <hr>
 
 **Setup Third Party Services**

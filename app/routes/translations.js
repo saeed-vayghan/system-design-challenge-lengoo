@@ -6,5 +6,4 @@ module.exports = function(app) {
 
 
   app.get('/api/find', translations.find);
-  app.post('/api/upload', translations.upload);
 };
