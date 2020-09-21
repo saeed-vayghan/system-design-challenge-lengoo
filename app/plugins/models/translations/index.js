@@ -2,9 +2,7 @@
 
 const sanitize = require('../../utils/sanitizer');
 const mongoose = require('mongoose');
-
-const Model = mongoose.model('Translations');
-
+const Translation = mongoose.model('Translations');
 
 
 const create = async function (data) {
@@ -21,7 +19,7 @@ const create = async function (data) {
   // }
 
   try {
-    created = await Model.create(sanitize(data));
+    created = await Translation.create(sanitize(data));
   } catch (ex) {
     error = ex;
   }
@@ -32,12 +30,13 @@ const create = async function (data) {
   };
 };
 
+
 const findOne = async function () {
   let error  = null;
   let record = null;
 
   try {
-    record = await Model.findOne({});
+    record = await Translation.findOne({});
   } catch (ex) {
     error = ex;
   }
@@ -56,7 +55,7 @@ const deleteOne = async function (_id) {
   let error = null;
 
   try {
-    await Model.deleteOne({ _id });
+    await Translation.deleteOne({ _id });
   } catch (ex) {
     error = ex;
   }

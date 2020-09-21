@@ -1,12 +1,8 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const User     = mongoose.model('User');
-
-const md5 = require('md5');
-const { alphaGen }  = require('../../plugins/utils/randomString');
 const validateEmail = require('../../plugins/utils/validateEmail');
-const { APIError } = require('../../plugins/middlewares/error');
+const { APIError }  = require('../../plugins/middlewares/error');
+const UserPlugin    = require('../../plugins/models/users');
 
 
 /**
@@ -70,23 +66,16 @@ const registerUser = async (req, res, next) => {
 
     body.email = body.email.toLowerCase();
   }
-
-  const user = new User();
-
-  user.salt = alphaGen.generate(8);
-  user.hashedPassword = md5(user.salt + body.password);
-  user.displayName = body.displayName;
-  user.email       = body.email;
-
-  const duplicateEmail = await User.findOne({ email: user.email });
-
+  
+  const duplicateEmail = await UserPlugin.findOneByQuery({ email: body.email });
+  
   if (duplicateEmail) {
     return next(new APIError(400, 'Duplicate Email!'));
   }
-
-  await user.save()
   
-  return res.json({ status: 'success' });
+  const user = await UserPlugin.createUser(body)
+  
+  return res.json({ status: 'success', user });
 };
 
 

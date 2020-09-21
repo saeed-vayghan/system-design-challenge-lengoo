@@ -1,11 +1,11 @@
 'use strict';
 
-const Plugin       = require('../../plugins/models/translations')
+const TranslationPlugin = require('../../plugins/models/translations')
 const { APIError } = require('../../plugins/middlewares/error');
 
 
-const find = async function (req, res, next) {
-  const { record, error } = await Plugin.findOne();
+const findOne = async function (req, res, next) {
+  const { record, error } = await TranslationPlugin.findOne();
 
   if (error) {
     return next(new APIError(400, error.message));
@@ -16,5 +16,5 @@ const find = async function (req, res, next) {
 
 
 module.exports = {
-  find
+  findOne
 }

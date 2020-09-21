@@ -1,44 +1,12 @@
 'use strict';
 
-const mongoose     = require('mongoose');
-const User         = mongoose.model('User');
-const Client       = mongoose.model('Client');
-const AccessToken  = mongoose.model('AccessToken');
-const RefreshToken = mongoose.model('RefreshToken');
-
 const md5 = require('md5');
-const { tokenGen } = require('../../plugins/utils/randomString');
+
 const { APIError } = require('../../plugins/middlewares/error');
-
-
-
-const createTokens = async (user, client) => {
-  const currentUnixTS = new Date().getTime();
-
-  /** @type {IAccessToken>} */
-  const aToken = new AccessToken();
-
-  /** @type {IRefreshToken>} */
-  const rToken = new RefreshToken();
-
-  aToken._user   = user._id; 
-  aToken.client  = client;
-  aToken.token   = tokenGen.generate(24);
-  aToken.created = currentUnixTS;
-
-  rToken._user   = user._id; 
-  rToken.client  = client;
-  rToken.token   = tokenGen.generate(24);
-  rToken.created = currentUnixTS;
-
-  await rToken.save();
-  await aToken.save();
-      
-  return {
-    aToken,
-    rToken
-  };
-};
+const UserPlugin   = require('../../plugins/models/users');
+const ClientPlugin = require('../../plugins/models/oauth/client');
+const AccessTokenPlugin  = require('../../plugins/models/oauth/accessTokens');
+const RefreshTokenPlugin = require('../../plugins/models/oauth/refreshTokens');
 
 
 /**
@@ -84,7 +52,7 @@ const createTokens = async (user, client) => {
  *       "message": "error-message"
  *     }
  */
-exports.userLogIn = async function (req, res, next) {
+const userLogIn = async function (req, res, next) {
   const email    = req.body.email.toLowerCase();
   const password = req.body.password.toLowerCase();
   const client   = req.headers['client'];
@@ -101,13 +69,13 @@ exports.userLogIn = async function (req, res, next) {
     return next(new APIError(403, 'Missed Password!'));
   }
 
-  const clientObj = await Client.findOne({ client: client })
+  const clientObj = await ClientPlugin.findOneByQuery({ client })
 
   if (!clientObj) {
     return next(new APIError(404, 'Bad Client!'));
   }
 
-  const user = await User.findOne({ email: email })
+  const user = await UserPlugin.findOneByQuery({ email })
 
   if (!user) {
     return next(new APIError(404, 'Credential Not Found!'));
@@ -117,18 +85,19 @@ exports.userLogIn = async function (req, res, next) {
     return next(new APIError(404, 'Credential Is Not Valid!'));
   }
 
-  const oldRefreshToken = await RefreshToken.findOne({ _user: user._id, client: client })
-  const oldAccessToken  = await AccessToken.findOne({ _user: user._id, client: client })
-  
+  const oldAccessToken  = await AccessTokenPlugin.findOneByQuery({ _user: user._id, client })
+  const oldRefreshToken = await RefreshTokenPlugin.findOneByQuery({ _user: user._id, client })
+
   if (oldAccessToken) {
-    await oldAccessToken.remove();
+    await AccessTokenPlugin.deleteOneById(oldAccessToken._id)
   }
 
   if (oldRefreshToken) {
-    await oldRefreshToken.remove();
+    await RefreshTokenPlugin.deleteOneById(oldRefreshToken._id)
   }
 
-  const { aToken, rToken } = await createTokens(user, client)
+  const aToken = await AccessTokenPlugin.createToken(user, client)
+  const rToken = await RefreshTokenPlugin.createToken(user, client)
 
   return res.json({
     status: 'success',
@@ -136,3 +105,8 @@ exports.userLogIn = async function (req, res, next) {
     refreshToken: rToken.token
   });
 };
+
+
+module.exports = {
+  userLogIn
+}

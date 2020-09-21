@@ -1,7 +1,7 @@
 'use strict';
 
-const Plugin       = require('../../plugins/models/translations')
-const { APIError } = require('../../plugins/middlewares/error');
+const SubtitlePlugin = require('../../plugins/models/subtitles');
+const { APIError }   = require('../../plugins/middlewares/error');
 
 
 const upload = async function (req, res, next) {
@@ -43,7 +43,7 @@ const upload = async function (req, res, next) {
     originalHash
   }
 
-  const { created, error } = await Plugin.create(data);
+  const { created, error } = await SubtitlePlugin.create(data);
 
   if (error) {
     return next(new APIError(400, error.message));
@@ -61,7 +61,7 @@ const upload = async function (req, res, next) {
       res.json({ message: 'File uploaded!' });
     });
   }
-}
+};
 
 
 module.exports = {

@@ -2,19 +2,17 @@
 
 const sanitize = require('../../utils/sanitizer');
 const mongoose = require('mongoose');
-
-const Model = mongoose.model('Subtitles');
-
+const Subtitle = mongoose.model('Subtitles');
 
 
 const create = async function (data) {
   let error   = null;
   let created = null;
 
-  const sub = new Model(data);
+  const sub = new Subtitle(data);
 
   try {
-    created = await Model.create(sanitize(sub));
+    created = await Subtitle.create(sanitize(sub));
   } catch (ex) {
     error = ex;
   }
@@ -30,7 +28,7 @@ const findOne = async function () {
   let record = null;
 
   try {
-    record = await Model.findOne({});
+    record = await Subtitle.findOne({});
   } catch (ex) {
     error = ex;
   }
@@ -46,7 +44,7 @@ const findByQuery = async function (query) {
   let Record  = null;
 
   try {
-    Record = await Model.findOne({ query: sanitize(query) });
+    Record = await Subtitle.findOne({ query: sanitize(query) });
   } catch (ex) {
     error = ex;
   }
