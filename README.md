@@ -1,7 +1,9 @@
 # system-design-challenge-lengoo
 
 **System Design**
-  A simple sketch on system architecture ([system-design.jpg](resource/system-design.jpg))
+  A simple sketch on system architecture ([system-design.jpg](resource/system-design.jpg))<br>
+
+  Tip: This is an experimental project, So I decided to implement a simple Authentication layer to learn how libraries like OAuth works, But for sure we must user standard libraries in the production.
 
 **Best practices**
   * [x] Project Structure, Grouping files by technical role (Configs, Routers, Models, Controllers)
