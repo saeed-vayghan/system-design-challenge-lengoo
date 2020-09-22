@@ -19,7 +19,7 @@ const createUser = async (body) => {
 
   await user.save();
 
-  return user
+  return user.toObject();
 };
 
 

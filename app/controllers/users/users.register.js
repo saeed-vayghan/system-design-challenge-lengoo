@@ -73,8 +73,12 @@ const registerUser = async (req, res, next) => {
     return next(new APIError(400, 'Duplicate Email!'));
   }
   
-  const user = await UserPlugin.createUser(body)
+  const user = await UserPlugin.createUser(body);
   
+  // we can have a general method to populate and remove critical data
+  delete user.salt
+  delete user.hashedPassword
+
   return res.json({ status: 'success', user });
 };
 

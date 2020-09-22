@@ -5,5 +5,5 @@ module.exports = function(app) {
   const translations = require('../controllers/translations');
 
 
-  app.get('/api/find', translations.find);
+  app.get('/api/find', translations.findOne);
 };
