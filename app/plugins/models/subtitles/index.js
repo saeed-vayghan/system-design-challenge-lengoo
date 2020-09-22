@@ -12,7 +12,7 @@ const create = async function (data) {
   const sub = new Subtitle(data);
 
   try {
-    created = await Subtitle.create(sanitize(sub));
+    created = await Subtitle.create(sub);
   } catch (ex) {
     error = ex;
   }

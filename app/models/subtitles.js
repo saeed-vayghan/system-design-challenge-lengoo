@@ -15,7 +15,6 @@ const subtitleSchema = new Schema(
   {
     _user: {
       type: Schema.Types.ObjectId,
-      unique: true,
       ref: 'User',
       required: true
     },

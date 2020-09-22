@@ -6,28 +6,7 @@ const Translation = mongoose.model('Translations');
 
 
 const create = async function (data) {
-  let error   = null;
-  let created = null;
-
-
-  // /** @type {IRecord} */
-  // const sampleData = {
-  //   name: 'number',
-  //   score: 10,
-  //   _id: 'id',
-  //   emails: ['str']
-  // }
-
-  try {
-    created = await Translation.create(sanitize(data));
-  } catch (ex) {
-    error = ex;
-  }
-
-  return {
-    created,
-    error
-  };
+  return await Translation.create(sanitize(data));
 };
 
 

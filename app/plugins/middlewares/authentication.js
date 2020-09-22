@@ -37,7 +37,7 @@ const authenticate = async (req, res, next) => {
   const aToken = await getTokenObj(token)
 
   if (!aToken) {
-    return res.status(401).json({ status: 'failed', message: 'token-not-fount' });
+    return res.status(403).json({ status: 'failed', message: 'token-not-fount' });
   }
 
   if (aToken.client !== client) {
