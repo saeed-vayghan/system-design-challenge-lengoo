@@ -2,9 +2,11 @@
 
 const { expect } = require('chai');
 
-const hash        = require('../../../app/plugins/utils/hash');
-const sanitize    = require('../../../app/plugins/utils/sanitizer');
-const levenshtein = require('../../../app/plugins/utils/levenshtein');
+const hash          = require('../../../app/plugins/utils/hash');
+const sanitize      = require('../../../app/plugins/utils/sanitizer');
+const levenshtein   = require('../../../app/plugins/utils/levenshtein');
+const validateEmail = require('../../../app/plugins/utils/validateEmail');
+const { alphaGen, tokenGen } = require('../../../app/plugins/utils/randomString');
 
 
 describe('#Testing Utilities', function() {
@@ -36,5 +38,24 @@ describe('#Testing Utilities', function() {
     const b = 'The contributors to this document have been directly involved in the development and deployment of hundreds of apps, and indirectly witnessed the development, operation, and scaling of hundreds of thousands of apps via our work on the Heroku platform.';
     
     expect(levenshtein(a, b).distance).to.be.equal(189);
+  });
+
+  it('should check the correctness of an email address', async function() {
+    const isValid    = validateEmail('saeed@domain.com');
+    const isNotValid = validateEmail('saeed@domain');
+
+    expect(isValid).to.be.equal(true);
+    expect(isNotValid).to.be.equal(false);
+  });
+
+  it('should check the functionality of alphaGen and tokenGen utilities', async function() {
+    const salt  = alphaGen.generate(8);
+    const token = tokenGen.generate(24);
+
+    expect(salt).to.not.equal(null);
+    expect(salt.length).to.equal(8);
+
+    expect(token).to.not.equal(null);
+    expect(token.length).to.equal(24);
   });
 });

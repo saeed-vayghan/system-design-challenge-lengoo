@@ -19,8 +19,14 @@ require('../../config');
 require('../../config/dbconfigs')();
 
 // inject models
-require('../../app/models/translations');
+require('../../app/models/core');
+require('../../app/models/public');
+require('../../app/models/admin');
 
+
+/*
+  Test Suites
+*/
 
 describe('DB Models', () => {
   require('./models/translations');
