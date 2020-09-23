@@ -36,7 +36,7 @@
   * [x] Levenshtein Distance Algorithm
   * [x] Query sanitizer
   * [x] Unit Test
-  * [ ] Functional Test
+  * [x] Functional Test
   * [x] File Manager (Local Disk, S3, ...)
 <hr>
 
