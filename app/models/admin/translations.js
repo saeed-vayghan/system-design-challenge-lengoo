@@ -13,18 +13,11 @@ const languageEnum = ['en', 'de'];
 
 const translationSchema = new Schema(
   {
-    source: {
-      type: String,
-      trim: true,
+    _operator: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
       required: true
     },
-
-    target: {
-      type: String,
-      trim: true,
-      required: true
-    },
-
 
     sourceLanguage: {
       type: String,
@@ -32,7 +25,6 @@ const translationSchema = new Schema(
       trim: true,
       required: true
     },
-
     targetLanguage: {
       type: String,
       enum: languageEnum,
@@ -40,24 +32,28 @@ const translationSchema = new Schema(
       required: true
     },
 
-
-    sourceLanguageHash: {
+    source: {
+      type: String,
+      trim: true,
+      required: true
+    },
+    target: {
       type: String,
       trim: true,
       required: true
     },
 
-    targetLanguageHash: {
+    sourceHash: {
       type: String,
-      trim: true,
-      required: true
+      trim: true
+    },
+    targetHash: {
+      type: String,
+      trim: true
     },
 
-
-    status: {
-      type: Boolean,
-      default: 0
-    },
+    sourceLength: Number,
+    targetLength: Number,
 
     created: Date,
     updated: Date
@@ -75,8 +71,11 @@ translationSchema.plugin(lastMod);
 translationSchema.pre('save', function(next) {
   const self = this
 
-  self.sourceLanguageHash = hash(self.sourceLanguage);
-  self.targetLanguageHash = hash(self.targetLanguage);
+  self.sourceHash = hash(self.source);
+  self.targetHash = hash(self.target);
+
+  self.sourceLength = self.source.length
+  self.targetLength = self.target.length
 
   next();
 });

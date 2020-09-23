@@ -6,7 +6,19 @@ const Translation = mongoose.model('Translations');
 
 
 const create = async function (data) {
-  return await Translation.create(sanitize(data));
+  let error   = null;
+  let created = null;
+
+  try {
+    created = await await Translation.create(sanitize(data));
+  } catch (ex) {
+    error = ex;
+  }
+
+  return {
+    created,
+    error
+  };
 };
 
 
