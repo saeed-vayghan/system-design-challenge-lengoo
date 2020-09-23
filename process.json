@@ -2,7 +2,7 @@
   "apps" : [
     {
       "name": "API-Server",
-      "script": "api-server.js",
+      "script": "server-public.js",
       "args": [],
       "log_date_format": "YYYY-MM-DD HH:mm Z",
       "watch": true,
@@ -18,7 +18,7 @@
 
     {
       "name": "Feed-Server",
-      "script": "feed-server.js",
+      "script": "server-admin.js",
       "args": [],
       "log_date_format": "YYYY-MM-DD HH:mm Z",
       "watch": true,

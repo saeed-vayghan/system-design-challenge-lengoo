@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
-const lastMod  = require('../plugins/models/lastMod');
+const lastMod  = require('../../plugins/models/lastMod');
 
 
 /**

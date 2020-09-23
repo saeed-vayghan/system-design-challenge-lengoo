@@ -26,10 +26,12 @@ app.use(fileUpload());
 require('./dbconfigs')();
 
 // inject models
-require('../app/models');
+require('../app/models/core');
+require('../app/models/admin');
 
 // inject routes
-require('../app/routes')(app);
+require('../app/routes/core')(app);
+require('../app/routes/admin')(app);
 
 
 app.use((err, req, res, next) => {

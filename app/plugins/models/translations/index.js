@@ -1,7 +1,7 @@
 'use strict';
 
-const sanitize = require('../../utils/sanitizer');
-const mongoose = require('mongoose');
+const sanitize    = require('../../utils/sanitizer');
+const mongoose    = require('mongoose');
 const Translation = mongoose.model('Translations');
 
 

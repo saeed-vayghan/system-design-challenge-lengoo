@@ -1,8 +1,8 @@
 'use strict';
 
-const validateEmail = require('../../plugins/utils/validateEmail');
-const { APIError }  = require('../../plugins/middlewares/error');
-const UserPlugin    = require('../../plugins/models/users');
+const validateEmail = require('../../../plugins/utils/validateEmail');
+const { APIError }  = require('../../../plugins/middlewares/error');
+const UserPlugin    = require('../../../plugins/models/users');
 
 
 /**

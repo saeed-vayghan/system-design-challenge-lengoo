@@ -3,7 +3,7 @@
 require('dotenv').config();
 require('./config')
 
-const app = require('./config/express.core');
+const app = require('./config/express.public');
 
 app.listen(8080, () => console.log('Listening on: 8080'));
 

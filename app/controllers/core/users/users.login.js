@@ -2,11 +2,11 @@
 
 const md5 = require('md5');
 
-const { APIError } = require('../../plugins/middlewares/error');
-const UserPlugin   = require('../../plugins/models/users');
-const ClientPlugin = require('../../plugins/models/oauth/client');
-const AccessTokenPlugin  = require('../../plugins/models/oauth/accessTokens');
-const RefreshTokenPlugin = require('../../plugins/models/oauth/refreshTokens');
+const { APIError } = require('../../../plugins/middlewares/error');
+const UserPlugin   = require('../../../plugins/models/users');
+const ClientPlugin = require('../../../plugins/models/oauth/client');
+const AccessTokenPlugin  = require('../../../plugins/models/oauth/accessTokens');
+const RefreshTokenPlugin = require('../../../plugins/models/oauth/refreshTokens');
 
 
 /**

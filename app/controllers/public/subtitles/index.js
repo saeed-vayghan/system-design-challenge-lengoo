@@ -2,8 +2,8 @@
 
 const util = require('util');
 
-const SubtitlePlugin = require('../../plugins/models/subtitles');
-const { APIError }   = require('../../plugins/middlewares/error');
+const SubtitlePlugin = require('../../../plugins/models/subtitles');
+const { APIError }   = require('../../../plugins/middlewares/error');
 
 
 const upload = async function (req, res, next) {

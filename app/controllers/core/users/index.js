@@ -3,5 +3,5 @@
   
 module.exports = {
   ...require('./users.register.js'),
-  ...require('./users.auth.js')
+  ...require('./users.login.js')
 };
