@@ -8,6 +8,9 @@ module.exports = {
     authors: 'Saeed Vayghani'
   },
 
+  public_port: process.env.NODE_PUBLIC_PORT,
+  admin_port: process.env.NODE_ADMIN_PORT,
+
   hash_secret: process.env.HASH_SECRET,
 
   mongoObjIdRegEx: new RegExp('^[0-9a-fA-F]{24}$'),

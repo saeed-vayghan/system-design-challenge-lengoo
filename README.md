@@ -85,7 +85,7 @@ docker-compose up --build
 docker exec -it backend-lengoo -bash
 cd /usr/src/app
 
-./node_modules/mocha/bin/mocha test/unit/index.js --exi
+./node_modules/mocha/bin/mocha --exit test/unit/index.js
 ```
 
 **Run functional tests**

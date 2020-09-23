@@ -30,15 +30,6 @@ require('../../app/models/admin');
   Test Suites
 */
 
-describe('DB Models', () => {
-  require('./models/translations');
-  require('./models/subtitles');
-});
-
-describe('Thirdpart Plugins', () => {
-  require('./thirdParty');
-});
-
-describe('Utilities', () => {
-  require('./utils');
+describe('Controllers - Endpoints', () => {
+  require('./suites/oauth');
 });
