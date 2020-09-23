@@ -55,9 +55,24 @@ const findByQuery = async function (query) {
   };
 };
 
+const deleteOne = async function (_id) {
+  let error = null;
+
+  try {
+    await Subtitle.deleteOne({ _id });
+  } catch (ex) {
+    error = ex;
+  }
+
+  return {
+    error
+  };
+};
+
 
 module.exports = {
   create,
   findOne,
-  findByQuery
+  findByQuery,
+  deleteOne
 }

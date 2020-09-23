@@ -30,6 +30,7 @@ require('../../app/models/admin');
 
 describe('DB Models', () => {
   require('./models/translations');
+  require('./models/subtitles');
 });
 
 describe('Thirdpart Plugins', () => {
