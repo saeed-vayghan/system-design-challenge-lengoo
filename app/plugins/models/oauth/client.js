@@ -8,7 +8,7 @@ const Client   = mongoose.model('Client');
 
 const findOneByQuery = async (query) => {
   return await Client.findOne(sanitize(query))
-}
+};
 
 
 module.exports = {

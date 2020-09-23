@@ -25,11 +25,11 @@ const createToken = async (user, client) => {
 
 const findOneByQuery = async (query) => {
   return await RefreshToken.findOne(sanitize(query))
-}
+};
 
 const deleteOneById = async (_id) => {
   return await RefreshToken.deleteOne({ _id })
-}
+};
 
 
 module.exports = {

@@ -37,7 +37,7 @@
   * [x] Query sanitizer
   * [x] Unit Test
   * [ ] Functional Test
-  * [ ] File Manager (Local Disk, S3, ...)
+  * [x] File Manager (Local Disk, S3, ...)
 <hr>
 
 **Setup Third Party Services**
@@ -82,7 +82,10 @@ docker-compose up --build
 
 **Run unit tests**
 ```bash
-mocha test/unit/index.js --exit
+docker exec -it backend-lengoo -bash
+cd /usr/src/app
+
+./node_modules/mocha/bin/mocha test/unit/index.js --exi
 ```
 
 **Run functional tests**
