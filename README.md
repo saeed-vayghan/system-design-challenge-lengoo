@@ -7,7 +7,7 @@
 
 **Best practices**
   * [x] Project Structure, Grouping files by technical role (Configs, Routers, Models, Controllers)
-  * [ ] Develop your own common utilities as a NPM package (to-do)
+  * [x] Develop your own common utilities as a NPM package (Rate limitters, ...)
   * [x] Separate Express App and Server
   * [x] Secure Environment Variables and Hierarchical Config
   * [x] Well defined Error Handling
@@ -16,15 +16,16 @@
   * [ ] Lock Dependencies (npm-shrinkwrap.json)
   * [ ] Using Snyk.io
   * [ ] Exit the process Gracefully
-  * [ ] CORS
+  * [x] CORS
   * [ ] Logging (APM, ELK, ...)
   * [ ] Monitoring
-  * [ ] Caching
-  * [ ] CI-CD
+  * [x] Caching
   * [ ] Documentaion (includes API-DOC)
-  * [ ] Automations Test and Code Coverage
+  * [x] Automations Test
+  * [ ] Code Coverage
   * [ ] Filter Input, Escape Output
-  * [ ] Authentication Layer (OAuth, JWT)
+  * [x] Authentication Layer (OAuth, JWT)
+  * [ ] CI-CD
 
 **Project Structure**
   * [x] GIT
@@ -43,7 +44,7 @@
 **Setup Third Party Services**
   * [x] MongoDB
   * [ ] ELK
-  * [ ] Redis
+  * [x] Redis
   * [ ] RabbitMQ
 <hr>
 
