@@ -13,7 +13,3 @@ process.on('uncaughtException', function (err) {
   console.error(err.stack);
   process.exit(1);
 });
-
-if ( process.env.NODE_ENV === 'test' ) {
-  module.exports = app;
-}

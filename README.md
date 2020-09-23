@@ -89,5 +89,11 @@ cd /usr/src/app
 ```
 
 **Run functional tests**
+```bash
+docker exec -it backend-lengoo -bash
+cd /usr/src/app
+
+./node_modules/mocha/bin/mocha --exit test/functional/index.js
+```
 
 **Generate code coverage report**

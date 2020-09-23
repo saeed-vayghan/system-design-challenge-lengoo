@@ -20,7 +20,7 @@ describe('#Testing Subtitles Model', function() {
     const { error } = await SubtitlePlugin.create(data);
   
     if (error) {
-      expect(error.message).to.be.equal("Subtitles validation failed: _user: Path `_user` is required.")
+      expect(error.message).to.be.equal('Subtitles validation failed: _user: Path `_user` is required.')
     }
   });
 

@@ -7,22 +7,22 @@ const TranslationPlugin = require('../../../app/plugins/models/translations');
 
 const sampleRecords = [
   {
-    "source": "Hello World",
-    "target": "Hallo Welt",
-    "sourceLanguage": "en",
-    "targetLanguage": "de"
+    'source': 'Hello World',
+    'target': 'Hallo Welt',
+    'sourceLanguage': 'en',
+    'targetLanguage': 'de'
   },
   {
-    "source": "Hello guys",
-    "target": "Hallo Leute",
-    "sourceLanguage": "en",
-    "targetLanguage": "de"
+    'source': 'Hello guys',
+    'target': 'Hallo Leute',
+    'sourceLanguage': 'en',
+    'targetLanguage': 'de'
   },
   {
-    "source": "I walk to the supermarket",
-    "target": "Ich gehe zum Supermarkt.",
-    "sourceLanguage": "en",
-    "targetLanguage": "de"
+    'source': 'I walk to the supermarket',
+    'target': 'Ich gehe zum Supermarkt.',
+    'sourceLanguage': 'en',
+    'targetLanguage': 'de'
   }
 ]
 
@@ -43,7 +43,7 @@ describe('#Testing Translations Model', function() {
     const { error } = await TranslationPlugin.create(records)
   
     if (error) {
-      expect(error.message).to.be.equal("Translations validation failed: _operator: Path `_operator` is required.")
+      expect(error.message).to.be.equal('Translations validation failed: _operator: Path `_operator` is required.')
     }
   });
 
