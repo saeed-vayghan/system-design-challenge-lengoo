@@ -24,22 +24,24 @@ const consume = async (workers) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if ( message.action === 'translate' ) {
-      const { error } = await workers.translator(message)
-
-      if (error) {
-        // channel.nack(msg, false);
+      try {
+        await workers.translator(message)
+        channel.ack(msg, false);
+      } catch (ex) {
+        console.log('Concumer Failed!')
+        channel.nack(msg, false);
       }
     }
 
     if ( message.action === 'report' ) {
-      const { error } = await workers.reporter(message)
-
-      if (error) {
-        // channel.nack(msg, false);
+      try {
+        await workers.reporter(message)
+        channel.ack(msg, false);
+      } catch (ex) {
+        console.log('Concumer Failed!')
+        channel.nack(msg, false);
       }
     }
-
-    channel.ack(msg, false);
 
   }, { noAck: false });
 

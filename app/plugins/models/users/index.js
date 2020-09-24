@@ -22,6 +22,21 @@ const createUser = async (body) => {
   return user.toObject();
 };
 
+const findById = async function (_id) {
+  let error  = null;
+  let user = null;
+
+  try {
+    user = await User.findOne({ _id });
+  } catch (ex) {
+    error = ex;
+  }
+
+  return {
+    user,
+    error
+  };
+};
 
 const findOneByQuery = async (query) => {
   return await User.findOne(sanitize(query))
@@ -30,5 +45,6 @@ const findOneByQuery = async (query) => {
 
 module.exports = {
   createUser,
+  findById,
   findOneByQuery,
 }

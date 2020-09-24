@@ -40,16 +40,16 @@ const findOne = async function () {
 
 const findById = async function (_id) {
   let error = null;
-  let Record  = null;
+  let sub   = null;
 
   try {
-    Record = await Subtitle.findOne({ _id });
+    sub = await Subtitle.findOne({ _id });
   } catch (ex) {
     error = ex;
   }
 
   return {
-    Record,
+    sub,
     error
   };
 };
