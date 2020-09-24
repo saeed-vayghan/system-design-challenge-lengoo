@@ -42,7 +42,7 @@ const UserSchema = new Schema(
   {
     collection: 'users',
     strict: true,
-    autoIndex: false,
+    autoIndex: true,
     usePushEach: true
   }
 );

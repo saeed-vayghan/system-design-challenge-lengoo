@@ -43,7 +43,6 @@ const AccessTokenSchema = new Schema(
   {
     _user: {
       type: Schema.Types.ObjectId,
-      unique: true,
       ref: 'User',
       required: true
     },
@@ -79,7 +78,6 @@ const RefreshTokenSchema = new Schema(
   {
     _user: {
       type: Schema.Types.ObjectId,
-      unique: true,
       ref: 'User',
       required: true
     },
@@ -106,6 +104,9 @@ const RefreshTokenSchema = new Schema(
     autoIndex: true
   }
 );
+
+RefreshTokenSchema.index({ _user: 1, client: 1}, { unique: true });
+RefreshTokenSchema.index({ _user: 1, client: 1}, { unique: true });
 
 
 AccessTokenSchema.post('save', async function(doc) {
@@ -134,6 +135,11 @@ RefreshTokenSchema.post('remove', async function(doc) {
 const ClientModel       = mongoose.model('Client', ClientSchema);
 const AccessTokenModel  = mongoose.model('AccessToken', AccessTokenSchema);
 const RefreshTokenModel = mongoose.model('RefreshToken', RefreshTokenSchema);
+
+ClientModel.create({ name: 'Web App', client: 'webApp' }, { upsert: true });
+ClientModel.create({ name: 'Android Mobile App', client: 'androidMobileApp' }, { upsert: true });
+ClientModel.create({ name: 'IOS Mobile App', client: 'iosMobileApp' }, { upsert: true });
+
 
 module.exports.ClientModel       = ClientModel;
 module.exports.AccessTokenModel  = AccessTokenModel; 
