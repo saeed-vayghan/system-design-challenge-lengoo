@@ -136,10 +136,6 @@ const ClientModel       = mongoose.model('Client', ClientSchema);
 const AccessTokenModel  = mongoose.model('AccessToken', AccessTokenSchema);
 const RefreshTokenModel = mongoose.model('RefreshToken', RefreshTokenSchema);
 
-ClientModel.create({ name: 'Web App', client: 'webApp' }, { upsert: true });
-ClientModel.create({ name: 'Android Mobile App', client: 'androidMobileApp' }, { upsert: true });
-ClientModel.create({ name: 'IOS Mobile App', client: 'iosMobileApp' }, { upsert: true });
-
 
 module.exports.ClientModel       = ClientModel;
 module.exports.AccessTokenModel  = AccessTokenModel; 
