@@ -9,8 +9,18 @@ let conn = null;
 
 
 const connection = async () => {
-  if (!conn) {
+  // if (!conn) {
+  //   conn = await amqp.connect(RABBIT_SERVER);
+  // }
+
+  try {
     conn = await amqp.connect(RABBIT_SERVER);
+
+  } catch (ex) {
+
+    if (!conn) {
+      process.exit(1);
+    }
   }
 
   const channel = await conn.createChannel();
