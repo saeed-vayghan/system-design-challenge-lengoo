@@ -66,35 +66,45 @@
 <hr><br><br>
 
 
-**How To**
+**Build and Start**
 ```bash
 sudo sysctl -w vm.max_map_count=262144
 
-docker-compose up --build
-```
+docker stop $(docker ps -aq); docker-compose up --build
 
-**TO-DO-Parts**
+# There will be 6 different containers:
+# 1- backend-lengoo
+# 2- mongodb-lengoo
+# 3- mongoExpress-lengoo
+# 4- elk-lengoo
+# 5- redis-lengoo
+# 6- rabbitmq-lengoo
+
+
+# Log in to any container
+# docker exec -it <container-name> bash
+
+docker exec -it backend-lengoo bash
+
+# Open a new terminal session to bottstrap system prerequisites
+curl -XPOST http://127.0.0.1:8090/bootstrap
+```
 
 **Run Eslint**
-
-**Generate API documentation**
-
-**Run application in local environment**
-
-**Run unit tests**
 ```bash
-docker exec -it backend-lengoo -bash
-cd /usr/src/app
+docker exec -it backend-lengoo bash
+
+npx eslint .
+```
+
+**Run Automations Tests**
+```bash
+docker exec -it backend-lengoo bash
 
 ./node_modules/mocha/bin/mocha --exit test/unit/index.js
-```
-
-**Run functional tests**
-```bash
-docker exec -it backend-lengoo -bash
-cd /usr/src/app
-
 ./node_modules/mocha/bin/mocha --exit test/functional/index.js
 ```
+
+**Generate API documentation**
 
 **Generate code coverage report**
