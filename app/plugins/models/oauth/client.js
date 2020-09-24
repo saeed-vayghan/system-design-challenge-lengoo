@@ -31,7 +31,7 @@ const createClients = async (user, client) => {
 };
 
 const findOneByQuery = async (query) => {
-  return await Client.findOne(sanitize(query))
+  return await Client.findOne(sanitize(query));
 };
 
 

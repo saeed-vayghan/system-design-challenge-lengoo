@@ -224,6 +224,36 @@ curl -XPOST http://127.0.0.1:8090/api/translations \
     "target": "Ich gehe zum Supermarkt.",
     "sourceLanguage": "en",
     "targetLanguage": "de"
+  },
+  {
+    "source": "I am Arwen - Ive come to help you",
+    "target": "Ich bin Arwen - Ich bin gekommen, um dir zu helfen.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  },
+  {
+    "source": "Come back to the light.",
+    "target": "Komm zurück zum Licht.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  },
+  {
+    "source": "Nooo, my precious!!.",
+    "target": "Nein, my Schatz!!.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  },
+  {
+    "source": "Nooo00, my precious!!.",
+    "target": "Nein, my Schatz!!.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  },
+  {
+    "source": "Nooo, dear precious!!.",
+    "target": "Nein, my Schatz!!.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
   }
 ]'
 ```

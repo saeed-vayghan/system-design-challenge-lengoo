@@ -18,7 +18,7 @@ const reporter = async (message) => {
   const to      = user.email;
   const subject = 'You Subtitle Has Been Translated.';
   const text    = 'Dear User! Please check the attchament to download the file.';
-  const path    = `./resource/uploaded/${sub._id}.txt`;
+  const path    = `./resource/translated/${sub._id}.txt`;
 
   const filename    = `${sub.fileName}__${sub.targetLanguage}.txt`;
   const attachments = [{ filename, path }];
@@ -28,7 +28,7 @@ const reporter = async (message) => {
   // TO DO: Dump sent email report
   const result = await sendEmail(mailOptions)
 
-  console.log('===> Reporter Done ===> result ==>', result);
+  console.log('===> Reporter Done ===> Result ==>', result);
 
   // Simulate IO delay
   await new Promise((resolve) => setTimeout(resolve, 10000));

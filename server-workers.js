@@ -12,6 +12,7 @@ require('./config/dbconfigs')();
 // Inject models
 require('./app/models/core');
 require('./app/models/public');
+require('./app/models/admin');
 
 
 const workers = require('./workers')

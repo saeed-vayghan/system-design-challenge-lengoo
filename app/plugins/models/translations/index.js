@@ -39,6 +39,11 @@ const findOne = async function () {
 };
 
 
+const findByQuery = async (query) => {
+  return await Translation.find(query);
+};
+
+
 /**
  * @param {ObjectId} _id
  */
@@ -60,5 +65,6 @@ const deleteOne = async function (_id) {
 module.exports = {
   create,
   findOne,
+  findByQuery,
   deleteOne
 }
