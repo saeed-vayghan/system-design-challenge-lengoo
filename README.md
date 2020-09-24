@@ -207,12 +207,12 @@ curl -XPOST http://127.0.0.1:8090/api/translations \
 -H 'Scope: admin' \
 -H 'Client: webApp' -d \
 '[
-``  {
+  {
     "source": "Hello World",
     "target": "Hallo Welt",
     "sourceLanguage": "en",
     "targetLanguage": "de"
-  }``,
+  },
   {
     "source": "Hello guys",
     "target": "Hallo Leute",

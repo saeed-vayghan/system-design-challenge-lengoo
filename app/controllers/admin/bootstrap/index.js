@@ -13,7 +13,7 @@ const createAdminUSer = async () => {
     const user = await UserPlugin.createUser({
       displayName: 'System Admin',
       email: 'admin@domain.com',
-      password: 123456
+      password: 'md5(123456)'
     });
   
     delete user.salt
