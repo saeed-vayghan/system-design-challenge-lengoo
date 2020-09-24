@@ -13,18 +13,18 @@
   * [x] Well defined Error Handling
   * [x] Eslint
   * [x] Naming-Tagging (Asset-Inventory)
+  * [x] Caching
+  * [x] Authentication Layer (OAuth, JWT)
+  * [x] Automations Test
+  * [x] CORS
+  * [x] Filter Input, Escape Output
   * [ ] Lock Dependencies (npm-shrinkwrap.json)
   * [ ] Using Snyk.io
-  * [ ] Exit the process Gracefully
-  * [x] CORS
-  * [ ] Logging (APM, ELK, ...)
   * [ ] Monitoring
-  * [x] Caching
+  * [ ] Logging (APM, ELK, ...)
+  * [ ] Exit the process Gracefully
   * [ ] Documentaion (includes API-DOC)
-  * [x] Automations Test
   * [ ] Code Coverage
-  * [ ] Filter Input, Escape Output
-  * [x] Authentication Layer (OAuth, JWT)
   * [ ] CI-CD
 
 **Project Structure**
@@ -63,6 +63,12 @@
 * Make balance between CPU cores and allocated Memory
 * Scalability
 <hr>
+
+**TO DO**
+* Login by Google and Outlook
+* ....
+<hr>
+
 <hr><br><br>
 
 
@@ -106,9 +112,12 @@ docker exec -it backend-lengoo bash
 ```
 
 **Generate API documentation**
+```bash
+```
 
 **Generate code coverage report**
-
+```bash
+```
 
 **Sample API Calls**
 ```bash
@@ -189,7 +198,6 @@ curl -XPOST http://127.0.0.1:8080/api/upload \
 
 
 # Introduce translation data
-
 
 curl -XPOST http://127.0.0.1:8090/api/translations \
 -H 'Authorization: <admin-token>' \
