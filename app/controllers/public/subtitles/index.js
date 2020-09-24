@@ -4,7 +4,7 @@ const util = require('util');
 
 const SubtitlePlugin = require('../../../plugins/models/subtitles');
 const { APIError }   = require('../../../plugins/middlewares/error');
-const producer       = require('../../../plugins/thirdParty/rabbit/producer')
+const producer       = require('../../../plugins/thirdParty/rabbit/producer');
 
 
 const upload = async function (req, res, next) {
@@ -49,7 +49,10 @@ const upload = async function (req, res, next) {
   if (created) {
     const dir  = './resource/uploaded/';
     const dest = dir + created._id + '.txt';
-  
+
+    // Simulate IO delay
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    
     const move = util.promisify(payload.mv);
 
     try {

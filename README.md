@@ -129,15 +129,30 @@ curl -XPOST http://127.0.0.1:8080/users/login \
 
 # Register a new user
 
+curl -XPOST http://127.0.0.1:8080/users/register \
 -H 'Content-Type: application/json' \
 -H 'App-Version: 1.0.0' \
 -H 'Scope: user' \
 -H 'Client: webApp' -d \
 '{
   "displayName": "user-name",
-  "email": "user4@domain.com",
+  "email": "user-1@domain.com",
   "password": "md5(123456)"
 }'
+
+# ==> Output:
+# {
+#   "status": "success",
+#   "user": {
+#     "displayName": "user-name",
+#     "roles": ["USER"],
+#     "_id": "5f6c8d3a2bc09200148ed66c",
+#     "email": "user4@domain.com",
+#     "created": "2020-09-24T12:12:42.480Z",
+#     "updated": "2020-09-24T12:12:42.480Z"
+#   }
+# }
+
 
 
 # Login with email address
@@ -153,6 +168,13 @@ curl -XPOST http://127.0.0.1:8080/users/login \
   "password": "md5(123456)"
 }'
 
+# ==> Output:
+# {
+#   "status": "success",
+#   "accessToken": "v9pn42a2qbggadowzus6fgh0",
+#   "refreshToken": "qawf66dxfvmi2mqy60z8orj6"
+# }
+
 
 
 # Upload a file
@@ -162,5 +184,37 @@ curl -XPOST http://127.0.0.1:8080/api/upload \
 -H 'App-Version: 1.0.0' \
 -H 'Client: webApp' \
 -H 'Scope: user' \
--F "fileName=Matrix-1999-en.txt" -F "sourceLanguage=en" -F "targetLanguage=de" -F "subtitle=@/home/docs/subs/Matrix-1999-en.txt"
+-F "fileName=Matrix-1999-en.txt" -F "sourceLanguage=en" -F "targetLanguage=de" -F "subtitle=@/home/saeed/subs/Matrix-1999-en.txt"
+
+
+
+# Introduce translation data
+
+
+curl -XPOST http://127.0.0.1:8090/api/translations \
+-H 'Authorization: <admin-token>' \
+-H 'Content-Type: application/json' \
+-H 'App-Version: 1.0.0' \
+-H 'Scope: admin' \
+-H 'Client: webApp' -d \
+'[
+``  {
+    "source": "Hello World",
+    "target": "Hallo Welt",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  }``,
+  {
+    "source": "Hello guys",
+    "target": "Hallo Leute",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  },
+  {
+    "source": "I walk to the supermarket",
+    "target": "Ich gehe zum Supermarkt.",
+    "sourceLanguage": "en",
+    "targetLanguage": "de"
+  }
+]'
 ```

@@ -1,6 +1,5 @@
 'use strict';
 
-const sanitize = require('../../utils/sanitizer');
 const mongoose = require('mongoose');
 const Subtitle = mongoose.model('Subtitles');
 
@@ -39,12 +38,12 @@ const findOne = async function () {
   };
 };
 
-const findByQuery = async function (query) {
+const findById = async function (_id) {
   let error = null;
   let Record  = null;
 
   try {
-    Record = await Subtitle.findOne({ query: sanitize(query) });
+    Record = await Subtitle.findOne({ _id });
   } catch (ex) {
     error = ex;
   }
@@ -73,6 +72,6 @@ const deleteOne = async function (_id) {
 module.exports = {
   create,
   findOne,
-  findByQuery,
+  findById,
   deleteOne
 }

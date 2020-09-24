@@ -16,8 +16,12 @@ const consume = async (workers) => {
   const q = await channel.assertQueue(QUEUE_NAME, { exclusive: false });
 
   channel.bindQueue(q.queue, EXCHANGE_NAME, key);
+
   channel.consume(q.queue, async function(msg) {
     const message = JSON.parse((msg.content.toString('utf8')));
+
+    // Simulate IO delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if ( message.action === 'translate' ) {
       const { error } = await workers.translator(message)
