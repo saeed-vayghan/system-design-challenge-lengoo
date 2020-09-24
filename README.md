@@ -108,3 +108,59 @@ docker exec -it backend-lengoo bash
 **Generate API documentation**
 
 **Generate code coverage report**
+
+
+**Sample API Calls**
+```bash
+
+# Login with admin user
+
+curl -XPOST http://127.0.0.1:8080/users/login \
+-H 'Content-Type: application/json' \
+-H 'App-Version: 1.0.0' \
+-H 'Scope: user' \
+-H 'Client: webApp' \
+-d \
+'{
+  "email": "admin@domain.com",
+  "password": "md5(123456)"
+}'
+
+
+# Register a new user
+
+-H 'Content-Type: application/json' \
+-H 'App-Version: 1.0.0' \
+-H 'Scope: user' \
+-H 'Client: webApp' -d \
+'{
+  "displayName": "user-name",
+  "email": "user4@domain.com",
+  "password": "md5(123456)"
+}'
+
+
+# Login with email address
+
+curl -XPOST http://127.0.0.1:8080/users/login \
+-H 'Content-Type: application/json' \
+-H 'App-Version: 1.0.0' \
+-H 'Scope: user' \
+-H 'Client: webApp' \
+-d \
+'{
+  "email": "user-1@domain.com",
+  "password": "md5(123456)"
+}'
+
+
+
+# Upload a file
+
+curl -XPOST http://127.0.0.1:8080/api/upload \
+-H 'Authorization: <token>' \
+-H 'App-Version: 1.0.0' \
+-H 'Client: webApp' \
+-H 'Scope: user' \
+-F "fileName=Matrix-1999-en.txt" -F "sourceLanguage=en" -F "targetLanguage=de" -F "subtitle=@/home/docs/subs/Matrix-1999-en.txt"
+```
