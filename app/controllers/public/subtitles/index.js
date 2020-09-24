@@ -64,7 +64,7 @@ const upload = async function (req, res, next) {
       }
 
       // Push a message to RabbitMQ to translate and report back to the user
-      await producer(msg);
+      await producer(msg, 'translation');
 
       res.json({ message: 'File uploaded!' });
 

@@ -2,17 +2,18 @@
 
 const connection = require('./connection');
 
-const { EXCHANGE_NAME, EXCHANGE_TYPE } = require('./constants')
+const { translation, reporting } = require('./constants')
 
 
-const produce = async (msg) => {
+const produce = async (msg, ex) => {
   const channel = await connection();
 
-  const key    = '';
+  const conf = ( ex === 'reporting' ) ? reporting : translation;
+
   const buffer = new Buffer(JSON.stringify(msg));
 
-  await channel.assertExchange(EXCHANGE_NAME, EXCHANGE_TYPE, { durable: true, persistent: true });
-  await channel.publish(EXCHANGE_NAME, key, buffer);
+  await channel.assertExchange(conf.exchange, conf.exchange_TYPE, { durable: true, persistent: true });
+  await channel.publish(conf.exchange, conf.key, buffer);
   await channel.close();
 };
 

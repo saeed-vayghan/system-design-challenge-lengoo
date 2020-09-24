@@ -23,5 +23,11 @@ module.exports = {
         ttl: 60 * 60 * 24
       }
     }
+  },
+
+  gmail: {
+    from: process.env.GMAIL_FROM,
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
   }
 }

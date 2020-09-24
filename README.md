@@ -39,13 +39,14 @@
   * [x] Unit Test
   * [x] Functional Test
   * [x] File Manager (Local Disk, S3, ...)
+  * [x] Nodemailer
 <hr>
 
 **Setup Third Party Services**
   * [x] MongoDB
-  * [ ] ELK
   * [x] Redis
   * [x] RabbitMQ
+  * [ ] ELK
 <hr>
 
 **Security checklist to consider**

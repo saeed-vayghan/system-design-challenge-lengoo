@@ -1,45 +1,37 @@
 'use strict';
 
+const config = require('../../config');
+
 const UserPlugin     = require('../../app/plugins/models/users');
 const SubtitlePlugin = require('../../app/plugins/models/subtitles');
 const sendEmail      = require('../../app/plugins/utils/mailer');
 
 
 const reporter = async (message) => {
-  console.log('===> reporter ===> message ==>', message);
-
   const subtitleResult = await SubtitlePlugin.findById(message._subtitle); // { sub, error }
-  const userResult     = await UserPlugin.findById(message._subtitle); // { user, error }
+  const sub = subtitleResult.sub;
 
-  const dir  = './resource/uploaded/';
-  const path = dir + subtitleResult.sub._id + '.txt';
+  const userResult = await UserPlugin.findById(subtitleResult.sub._user); // { user, error }
+  const user = userResult.user;
 
-  const mailOptions = {
-    from: 'no-reply-translator@gmail.com',
-    to: userResult.user.email,
-    subject: 'You Subtitle Has Been Translated.',
-    text: 'Dear User! Please check the attchament to download the file.',
+  const from    = config.gmail.from;
+  const to      = user.email;
+  const subject = 'You Subtitle Has Been Translated.';
+  const text    = 'Dear User! Please check the attchament to download the file.';
+  const path    = `./resource/uploaded/${sub._id}.txt`;
+
+  const filename    = `${sub.fileName}__${sub.targetLanguage}.txt`;
+  const attachments = [{ filename, path }];
+
+  const mailOptions = { from, to, subject, text, attachments };
   
-    attachments: [
-      // { // binary buffer as an attachment
-      //   filename: 'translated-1.txt',
-      //   content: new Buffer('hello world!','utf-8')
-      // },
-  
-      {  // file on disk as an attachment
-        filename: 'translated-1.txt',
-        path
-      }
-  
-      // { // filename and content type is derived from path
-      //   path: '/path/to/translated-3.txt'
-      // }
-    ]
-  };
-  
+  // TO DO: Dump sent email report
   const result = await sendEmail(mailOptions)
 
-  console.log('===> reporter ===> result ==>', result);
+  console.log('===> Reporter Done ===> result ==>', result);
+
+  // Simulate IO delay
+  await new Promise((resolve) => setTimeout(resolve, 10000));
 };
 
 
