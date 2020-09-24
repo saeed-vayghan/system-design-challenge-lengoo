@@ -45,7 +45,7 @@
   * [x] MongoDB
   * [ ] ELK
   * [x] Redis
-  * [ ] RabbitMQ
+  * [x] RabbitMQ
 <hr>
 
 **Security checklist to consider**
@@ -180,7 +180,7 @@ curl -XPOST http://127.0.0.1:8080/users/login \
 # Upload a file
 
 curl -XPOST http://127.0.0.1:8080/api/upload \
--H 'Authorization: <token>' \
+-H 'Authorization: v9pn42a2qbggadowzus6fgh0' \
 -H 'App-Version: 1.0.0' \
 -H 'Client: webApp' \
 -H 'Scope: user' \
