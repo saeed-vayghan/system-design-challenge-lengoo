@@ -1,17 +1,40 @@
 'use strict';
 
 const ClientPlugin = require('../../../plugins/models/oauth/client')
-const { APIError } = require('../../../plugins/middlewares/error');
+const UserPlugin   = require('../../../plugins/models/users');
 
+
+const createClients = async () => {
+  return await ClientPlugin.createClients();
+};
+
+const createAdminUSer = async () => {
+  try {
+    const user = await UserPlugin.createUser({
+      displayName: 'System Admin',
+      email: 'admin@domain.com',
+      password: 123456
+    });
+  
+    delete user.salt
+    delete user.hashedPassword
+  
+    return user
+
+  } catch (ex) {
+
+    return ex
+  }
+};
 
 const start = async function (req, res, next) {
-  const { result, error } = await ClientPlugin.createClients()
+  const clients = await createClients();
+  const admin   = await createAdminUSer();
 
-  if (error) {
-    return next(new APIError(500, error.message));
-  }
-
-  return res.json(result)
+  return res.json({
+    clients,
+    admin
+  })
 };
 
 
