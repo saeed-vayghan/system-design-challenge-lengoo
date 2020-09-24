@@ -4,6 +4,7 @@ const util = require('util');
 
 const SubtitlePlugin = require('../../../plugins/models/subtitles');
 const { APIError }   = require('../../../plugins/middlewares/error');
+const producer       = require('../../../plugins/thirdParty/rabbit/producer')
 
 
 const upload = async function (req, res, next) {
@@ -54,12 +55,13 @@ const upload = async function (req, res, next) {
     try {
       await move(dest);
 
-      // const msg = {
-      //   action: 'translate',
-      //   _subtitle: created._id
-      // }
+      const msg = {
+        action: 'translate',
+        _subtitle: created._id
+      }
 
       // Push a message to RabbitMQ to translate and report back to the user
+      await producer(msg);
 
       res.json({ message: 'File uploaded!' });
 

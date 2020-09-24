@@ -2,10 +2,20 @@
 
 const connection = require('./connection');
 
-const EXCHANGE_NAME = 'translation';
-const EXCHANGE_TYPE = 'fanout';
-const QUEUE_NAME    = 'translation.translate';
+const { EXCHANGE_NAME, EXCHANGE_TYPE, QUEUE_NAME } = require('./constants')
 
+
+const translator = async (message) => {
+  const status = true;
+  const error  = null;
+
+  console.log('===> translator ===> message ==>', message);
+
+  return {
+    status,
+    error
+  }
+};
 
 const consume = async () => {
   const channel = await connection();
@@ -19,13 +29,17 @@ const consume = async () => {
 
   channel.bindQueue(q.queue, EXCHANGE_NAME, key);
   channel.consume(q.queue, async function(msg) {
-    
-    const body = JSON.parse((msg.content.toString('utf8')));
+    const message = JSON.parse((msg.content.toString('utf8')));
 
-    console.log('===> message body ==>', body)
+    if ( message.action === 'translate' ) {
+      const { error } = await translator(message)
 
-    channel.ack(msg, false);
-    // channel.nack(msg, false);
+      if (error) {
+        // channel.nack(msg, false);
+      }
+
+      channel.ack(msg, false);
+    }
 
   }, { noAck: false });
 

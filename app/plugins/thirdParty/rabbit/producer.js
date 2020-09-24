@@ -2,8 +2,7 @@
 
 const connection = require('./connection');
 
-const EXCHANGE_NAME = 'translation';
-const EXCHANGE_TYPE = 'fanout';
+const { EXCHANGE_NAME, EXCHANGE_TYPE } = require('./constants')
 
 
 const produce = async (msg) => {
