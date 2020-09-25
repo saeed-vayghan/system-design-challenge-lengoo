@@ -112,7 +112,7 @@ docker exec -it backend-lengoo bash
 ./node_modules/mocha/bin/mocha --exit test/functional/index.js
 ```
 
-**Generate API documentation**
+**Generate API documentation** ([api-doc.jpg](resource/api-doc.jpg))
 ```bash
 
 apidoc -i app/controllers/ -o api-docs/
