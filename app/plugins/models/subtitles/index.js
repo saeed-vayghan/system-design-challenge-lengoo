@@ -54,6 +54,22 @@ const findById = async function (_id) {
   };
 };
 
+const updateOne = async function (_id, query) {
+  let error  = null;
+  let record = null;
+
+  try {
+    record = await Subtitle.updateOne({ _id }, query);
+  } catch (ex) {
+    error = ex;
+  }
+
+  return {
+    record,
+    error
+  };
+};
+
 const deleteOne = async function (_id) {
   let error = null;
 
@@ -73,5 +89,6 @@ module.exports = {
   create,
   findOne,
   findById,
+  updateOne,
   deleteOne
 }

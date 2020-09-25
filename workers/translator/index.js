@@ -138,17 +138,19 @@ const translator = async (message) => {
   
   for (const obj of output) {
     const line = `${obj.lineNum} ${obj.timeBlock} ${obj.translation}\n`;
-    writer.write(line)
+    writer.write(line);
   }
-  writer.close()
+  writer.close();
 
+
+  // Set as translated
+  await SubtitlePlugin.updateOne(sub._id, { $set: { status : 'translated' } });
 
   // Push a new message to Rabbit in order to email the translated document to user
   const msg = {
     action: 'report',
     _subtitle: message._subtitle
   };
-
 
   console.log('===> Translator Done ===> Result ==>', output);
 

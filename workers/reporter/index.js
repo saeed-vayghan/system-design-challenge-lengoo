@@ -16,17 +16,20 @@ const reporter = async (message) => {
 
   const from    = config.gmail.from;
   const to      = user.email;
-  const subject = 'You Subtitle Has Been Translated.';
+  const subject = 'Your Subtitle Has Been Translated.';
   const text    = 'Dear User! Please check the attchament to download the file.';
   const path    = `./resource/translated/${sub._id}.txt`;
 
   const filename    = `${sub.fileName}__${sub.targetLanguage}.txt`;
   const attachments = [{ filename, path }];
 
-  const mailOptions = { from, to, subject, text, attachments };
-  
+  const mailOptions = { from, to, subject, text, attachments };  
+
   // TO DO: Dump sent email report
   const result = await sendEmail(mailOptions)
+
+  // Set as reported
+  await SubtitlePlugin.updateOne(sub._id, { $set: { reported : true } });
 
   console.log('===> Reporter Done ===> Result ==>', result);
 
