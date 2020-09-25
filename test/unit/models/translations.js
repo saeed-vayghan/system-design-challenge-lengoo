@@ -71,12 +71,12 @@ describe('#Testing Translations Model', function() {
 
   it('should delete a Translations by id', async function() {
     for ( const record of createRecords ) {
-      await TranslationPlugin.deleteOne(record._id)
+      await TranslationPlugin.deleteOne(record._id);
+
+      const result = await TranslationPlugin.findById(record._id);
+  
+      expect(result.record).to.be.equal(null);
+      expect(result.error).to.be.equal(null);
     }
-
-    const result = await TranslationPlugin.findOne()
-
-    expect(result.record).to.be.equal(null);
-    expect(result.error).to.be.equal(null);
   });
 });

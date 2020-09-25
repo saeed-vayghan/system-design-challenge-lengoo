@@ -48,15 +48,15 @@ describe('#Testing Subtitles Model', function() {
 
     const result = await SubtitlePlugin.findOne()
 
-    expect(result.reported).to.be.equal(true);
+    expect(result.record.reported).to.be.equal(true);
   });
 
   it('should delete a Subtitles by id', async function() {
     await SubtitlePlugin.deleteOne(createRecord._id)
 
-    const result = await SubtitlePlugin.findOne()
+    const result = await SubtitlePlugin.findById(createRecord._id)
 
-    expect(result.record).to.be.equal(null);
+    expect(result.sub).to.be.equal(null);
     expect(result.error).to.be.equal(null);
   });
 });

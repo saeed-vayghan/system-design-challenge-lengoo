@@ -43,6 +43,26 @@ const findOne = async function () {
 
 
 /**
+ * @param {ObjectId} _id
+ */
+const findById = async function (_id) {
+  let error  = null;
+  let record = null;
+
+  try {
+    record = await Translation.findOne({ _id });
+  } catch (ex) {
+    error = ex;
+  }
+
+  return {
+    record,
+    error
+  };
+};
+
+
+/**
  * @param {Object} query
  */
 const findByQuery = async (query) => {
@@ -71,6 +91,7 @@ const deleteOne = async function (_id) {
 module.exports = {
   create,
   findOne,
+  findById,
   findByQuery,
   deleteOne
 }
