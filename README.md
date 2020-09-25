@@ -3,7 +3,7 @@
 **System Design**
   A simple sketch on system architecture ([system-design.jpg](resource/system-design.jpg))<br>
 
-  Tip: This is an experimental project, So I decided to implement a simple Authentication layer to learn how libraries like OAuth works, But for sure we must user standard libraries in the production.
+  Tip: This is an experimental project, So I decided to implement a simple Authentication layer to learn how libraries like OAuth works, But for sure we must use standard libraries in the production.
 
 **Best practices**
   * [x] Project Structure, Grouping files by technical role (Configs, Routers, Models, Controllers)
@@ -16,15 +16,15 @@
   * [x] Caching
   * [x] Authentication Layer (OAuth, JWT)
   * [x] Automations Test
+  * [x] Code Coverage
   * [x] CORS
   * [x] Filter Input, Escape Output
+  * [x] Documentaion (includes API-DOC)
   * [ ] Lock Dependencies (npm-shrinkwrap.json)
   * [ ] Using Snyk.io
   * [ ] Monitoring
   * [ ] Logging (APM, ELK, ...)
   * [ ] Exit the process Gracefully
-  * [ ] Documentaion (includes API-DOC)
-  * [ ] Code Coverage
   * [ ] CI-CD
 
 **Project Structure**
