@@ -31,5 +31,6 @@ require('../../app/models/admin');
 */
 
 describe('Controllers - Endpoints', () => {
-  require('./suites/oauth');
+  require('./suites/info');
+  require('./suites/users');
 });
