@@ -114,12 +114,17 @@ docker exec -it backend-lengoo bash
 
 **Generate API documentation** ([api-doc.png](resource/api-doc.png))
 ```bash
+docker exec -it backend-lengoo bash
 
 apidoc -i app/controllers/ -o api-docs/
 ```
 
 **Generate code coverage report**
 ```bash
+docker exec -it backend-lengoo bash
+
+nyc mocha test/unit/ --exit
+nyc mocha test/functional/ --exit
 ```
 
 **Sample API Calls**
