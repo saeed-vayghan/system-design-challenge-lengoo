@@ -199,6 +199,7 @@ curl -XPOST http://127.0.0.1:8080/api/upload \
 
 
 # Introduce translation data
+For more sampling: [sample-data.md](resource/sample-data.md))
 
 curl -XPOST http://127.0.0.1:8090/api/translations \
 -H 'Authorization: <admin-token>' \
