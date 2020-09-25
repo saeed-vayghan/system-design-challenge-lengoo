@@ -7,6 +7,10 @@ const RefreshToken = mongoose.model('RefreshToken');
 const { tokenGen } = require('../../utils/randomString');
 
 
+/**
+ * @param {String} client
+ * @param {Object} user
+ */
 const createToken = async (user, client) => {
   const currentUnixTS = new Date().getTime();
 
@@ -23,10 +27,18 @@ const createToken = async (user, client) => {
   return rToken
 };
 
+
+/**
+ * @param {Object} query
+ */
 const findOneByQuery = async (query) => {
   return await RefreshToken.findOne(sanitize(query))
 };
 
+
+/**
+ * @param {ObjectId} _id
+ */
 const deleteOneById = async (_id) => {
   return await RefreshToken.deleteOne({ _id })
 };

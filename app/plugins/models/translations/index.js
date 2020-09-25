@@ -5,6 +5,9 @@ const mongoose    = require('mongoose');
 const Translation = mongoose.model('Translations');
 
 
+/**
+ * @param {Object} data
+ */
 const create = async function (data) {
   let error   = null;
   let created = null;
@@ -39,6 +42,9 @@ const findOne = async function () {
 };
 
 
+/**
+ * @param {Object} query
+ */
 const findByQuery = async (query) => {
   return await Translation.find(query);
 };

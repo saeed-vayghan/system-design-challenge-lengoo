@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Client   = mongoose.model('Client');
 
 
-const createClients = async (user, client) => {
+const createClients = async () => {
   let error  = null;
   let result = null;
 
@@ -30,6 +30,10 @@ const createClients = async (user, client) => {
   };
 };
 
+
+/**
+ * @param {Object} query
+ */
 const findOneByQuery = async (query) => {
   return await Client.findOne(sanitize(query));
 };

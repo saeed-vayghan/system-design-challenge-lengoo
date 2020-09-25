@@ -3,7 +3,7 @@
 const config = require('../../../../config');
 const amqp   = require('amqplib');
 
-const RABBIT_SERVER = config.rabbit
+const RABBIT_SERVER = config.rabbit;
 
 let conn = null;
 
@@ -25,8 +25,8 @@ const connection = async () => {
 
   const channel = await conn.createChannel();
 
-  return channel
+  return channel;
 }
 
 
-module.exports = connection
+module.exports = connection;

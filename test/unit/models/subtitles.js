@@ -42,6 +42,14 @@ describe('#Testing Subtitles Model', function() {
       createRecord = created
     }
   });
+  
+  it('should update a Subtitles by id', async function() {
+    await SubtitlePlugin.updateOne(createRecord._id, { $set: { reported: true } })
+
+    const result = await SubtitlePlugin.findOne()
+
+    expect(result.reported).to.be.equal(true);
+  });
 
   it('should delete a Subtitles by id', async function() {
     await SubtitlePlugin.deleteOne(createRecord._id)

@@ -15,19 +15,19 @@ const get = promisify(tokensClient.get.bind(tokensClient))
 const getUser = async (userId) => {
   const selectedFields = '_id displayName email roles created updated';
 
-  return await User.findById(userId, selectedFields)
+  return await User.findById(userId, selectedFields);
 };
 
 const getTokenObj = async (token) => {
   const redisKey = 'accessTokens.' + token;
 
-  const doc = await get(redisKey)
+  const doc = await get(redisKey);
 
   if (doc) {
     return JSON.parse(doc);
   }
 
-  return await AccessToken.findOne({ token: token })
+  return await AccessToken.findOne({ token: token });
 };
 
 const authenticate = async (req, res, next) => {
@@ -49,7 +49,7 @@ const authenticate = async (req, res, next) => {
     return res.status(401).json({ status: 'failed', message: 'token-expired' });
   }
 
-  const currentUser = await getUser(aToken._user)
+  const currentUser = await getUser(aToken._user);
 
   if (!currentUser) {
     return res.status(404).json({ status: 'failed', message: 'user-not-fount' }); 

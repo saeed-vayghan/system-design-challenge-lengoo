@@ -11,18 +11,18 @@ const connectToDatabase = async () => {
     // auth: { authdb: 'db' },
     useNewUrlParser: true,
     useUnifiedTopology: true
-  }
+  };
   
   try {
     const database = await mongoose.connect(config.mongo.uri, options);
     const state    = database.connections[0].readyState;
     
-    return state
+    return state;
 
   } catch (ex) {
 
-    console.log('Database Connection Failed!', ex)
-    throw ex
+    console.log('Database Connection Failed!', ex);
+    throw ex;
   }
 };
 

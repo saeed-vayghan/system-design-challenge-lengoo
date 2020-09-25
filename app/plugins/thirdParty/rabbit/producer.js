@@ -2,7 +2,7 @@
 
 const connection = require('./connection');
 
-const { translation, reporting } = require('./constants')
+const { translation, reporting } = require('./constants');
 
 
 const produce = async (msg, ex) => {

@@ -9,6 +9,9 @@ const sanitize     = require('../../utils/sanitizer');
 const { alphaGen } = require('../../utils/randomString');
 
 
+/**
+ * @param {Object} body
+ */
 const createUser = async (body) => {
   const user = new User();
 
@@ -22,6 +25,10 @@ const createUser = async (body) => {
   return user.toObject();
 };
 
+
+/**
+ * @param {ObjectId} _id
+ */
 const findById = async function (_id) {
   let error  = null;
   let user = null;
@@ -38,6 +45,10 @@ const findById = async function (_id) {
   };
 };
 
+
+/**
+ * @param {Object} query
+ */
 const findOneByQuery = async (query) => {
   return await User.findOne(sanitize(query))
 };

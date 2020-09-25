@@ -2,7 +2,7 @@
 
 const connection = require('./connection');
 
-const { translation, reporting } = require('./constants')
+const { translation, reporting } = require('./constants');
 
 
 const consumer = async (handler, ex) => {
@@ -20,12 +20,12 @@ const consumer = async (handler, ex) => {
     const message = JSON.parse((msg.content.toString('utf8')));
 
     try {
-      await handler(message)
+      await handler(message);
       channel.ack(msg, false);
 
     } catch (ex) {
 
-      console.log('Concumer Failed!', ex)
+      console.log('Concumer Failed!', ex);
       channel.nack(msg, false);
     }
 
@@ -35,8 +35,8 @@ const consumer = async (handler, ex) => {
 };
 
 const consume = async (workers) => {
-  await consumer(workers.translator, 'translation')
-  await consumer(workers.reporter, 'reporting')
+  await consumer(workers.translator, 'translation');
+  await consumer(workers.reporter, 'reporting');
 };
 
 

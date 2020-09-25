@@ -70,8 +70,8 @@ const translate = async (input, query) => {
   let target = null;
 
   for ( const record of result ) {
-    const translation = record.target
-    const distance    = levenshtein(input.textBlock, record.source).distance
+    const translation = record.target;
+    const distance    = levenshtein(input.textBlock, record.source).distance;
 
     if ( distance <= 5 ) {
 
@@ -111,9 +111,9 @@ const process = async (sub) => {
     const target = await translate(obj, query);
 
     if (target) {
-      obj['translation'] = target.translation
+      obj['translation'] = target.translation;
     } else {
-      obj['translation'] = target.textBlock
+      obj['translation'] = target.textBlock;
     }
   }
 
@@ -134,7 +134,7 @@ const translator = async (message) => {
   const output = await process(sub);
 
   const dest   = `./resource/translated/${sub._id}.txt`;
-  const writer = fs.createWriteStream(dest, { flags: 'w' })
+  const writer = fs.createWriteStream(dest, { flags: 'w' });
   
   for (const obj of output) {
     const line = `${obj.lineNum} ${obj.timeBlock} ${obj.translation}\n`;

@@ -19,7 +19,7 @@ const RefreshTokenPlugin = require('../../../plugins/models/oauth/refreshTokens'
  * @apiUse BaseHeader
  *
  * @apiParam {String} email
- * @apiParam {String} password - one time md5 user enetered password
+ * @apiParam {String} password
  *
  * @apiParamExample {json} Request:
  *    /users/login

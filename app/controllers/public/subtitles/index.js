@@ -7,6 +7,41 @@ const { APIError }   = require('../../../plugins/middlewares/error');
 const producer       = require('../../../plugins/thirdParty/rabbit/producer');
 
 
+/**
+ * @api {post} /api/translations Upload a subtitle file
+ * @apiVersion 1.0.0
+ * @apiName uploadSubtitle
+ * @apiGroup User-Action
+ * @apiPermission User
+ *
+ * @apiUse authenticateHeader
+ *
+ * @apiParam {String} fileName
+ * @apiParam {String} sourceLanguage
+ * @apiParam {String} targetLanguage
+ *
+ * @apiParamExample {json} Request:
+ *    /api/translations
+      -F "fileName=Matrix-1999-en.txt" -F "sourceLanguage=en" -F "targetLanguage=de" -F "subtitle=@/path/to/Matrix-1999-en.txt"
+ *
+ * @apiSuccess {String} status Response status
+ *
+ * @apiSuccessExample {json} Response-Structure:
+ *    HTTP/1.1 200 OK
+ *    {
+ *      "status": "success"
+ *    }
+ *
+ * @apiError {String} status Error status
+ * @apiError {String} message Error message
+ *
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 400 db related error
+ *     {
+ *       "status": "failed",
+ *       "message": "error-message"
+ *     }
+ */
 const upload = async function (req, res, next) {
   const body    = req.body
   const files   = req.files

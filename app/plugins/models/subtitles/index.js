@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const Subtitle = mongoose.model('Subtitles');
 
 
+
+/**
+ * @param {Object} data
+ */
 const create = async function (data) {
   let error   = null;
   let created = null;
@@ -22,6 +26,7 @@ const create = async function (data) {
   };
 };
 
+
 const findOne = async function () {
   let error  = null;
   let record = null;
@@ -38,6 +43,10 @@ const findOne = async function () {
   };
 };
 
+
+/**
+ * @param {ObjectId} _id
+ */
 const findById = async function (_id) {
   let error = null;
   let sub   = null;
@@ -54,6 +63,11 @@ const findById = async function (_id) {
   };
 };
 
+
+/**
+ * @param {ObjectId} _id
+ * @param {Object} query
+ */
 const updateOne = async function (_id, query) {
   let error  = null;
   let record = null;
@@ -70,6 +84,10 @@ const updateOne = async function (_id, query) {
   };
 };
 
+
+/**
+ * @param {ObjectId} _id
+ */
 const deleteOne = async function (_id) {
   let error = null;
 
