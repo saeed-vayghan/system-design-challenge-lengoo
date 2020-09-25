@@ -114,6 +114,8 @@ docker exec -it backend-lengoo bash
 
 **Generate API documentation**
 ```bash
+
+apidoc -i app/controllers/ -o api-docs/
 ```
 
 **Generate code coverage report**
