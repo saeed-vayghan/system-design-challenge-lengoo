@@ -29,7 +29,7 @@ const reporter = async (message) => {
   const result = await sendEmail(mailOptions)
 
   // Set as reported
-  await SubtitlePlugin.updateOne(sub._id, { $set: { reported : true } });
+  await SubtitlePlugin.updateOne(sub._id, { $set: { reported: true } });
 
   console.log('===> Reporter Done ===> Result ==>', result);
 

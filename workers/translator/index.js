@@ -144,7 +144,7 @@ const translator = async (message) => {
 
 
   // Set as translated
-  await SubtitlePlugin.updateOne(sub._id, { $set: { status : 'translated' } });
+  await SubtitlePlugin.updateOne(sub._id, { $set: { status: 'translated' } });
 
   // Push a new message to Rabbit in order to email the translated document to user
   const msg = {
