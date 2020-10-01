@@ -1,0 +1,7 @@
+.eslintrc.js
+
+api-docs
+coverage
+node_modules
+
+**/*.ts

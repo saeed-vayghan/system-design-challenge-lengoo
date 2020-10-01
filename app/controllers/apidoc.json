@@ -1,0 +1,11 @@
+{
+  "name": "system-design-challenge-lengoo",
+  "version": "1.0.0",
+  "description": "API Documentation",
+  "title": "API Doc",
+  "url" : "",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}

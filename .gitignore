@@ -1,0 +1,7 @@
+node_modules
+resource/uploaded
+resource/translated
+api-docs
+
+.env
+.nyc_output
